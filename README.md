@@ -1,4 +1,5 @@
 # Pharmacie-Grp3
+
 Première mini application Backend avec JaKarta EE
 
 
@@ -97,5 +98,7 @@ vulnérabilité identifiée.
 anglophones
 • Contribution à la mise à jour des bases de connaissances francophones ou anglophones
 accessibles par Internet
+
+
 
 
