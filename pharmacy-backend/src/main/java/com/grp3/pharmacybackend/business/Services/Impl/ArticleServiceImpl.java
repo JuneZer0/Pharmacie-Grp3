@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.transaction.Transactional;
-
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,16 +21,17 @@ public class ArticleServiceImpl implements IArticleService{
         }
      // trouver un article par son nom
         @Override
-        public List<ArticleDto> findAllArticleByName(String ArticleName) {
+        public List<ArticleDto> findArticlesByName(String articleName) {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapToListDesArticlesDto(articleDao.findAllByNameContaining(ArticleName));
+            allArticles = mapToListDesArticlesDto(articleDao.findAllByNameContaining(articleName));
             return allArticles;
         }
        // trouver un article par son id
-
-
-      
-
+       @Override
+       public Optional<ArticleDto> findArticleById(Long id) {
+           // TODO Auto-generated method stub
+           return null;
+       }
        
         //rajouter un article
         @Override
@@ -45,7 +45,11 @@ public class ArticleServiceImpl implements IArticleService{
         }
          // modifier un article
         
-
+         @Override
+         public void updateArticle(Long id, ArticleDto articleDto) {
+             // TODO Auto-generated method stub
+             
+         }
 
 
          // Permet de supprimer un article
@@ -54,21 +58,9 @@ public class ArticleServiceImpl implements IArticleService{
           this.articleDao.deleteById(id); 
     
         }
-        @Override
-        public List<ArticleDto> findArticlesByName(String articleName) {
-            // TODO Auto-generated method stub
-            return null;
-        }
-        @Override
-        public Optional<ArticleDto> findArticleById(Long id) {
-            // TODO Auto-generated method stub
-            return null;
-        }
-        @Override
-        public void updateArticle(Long id, ArticleDto articleDto) {
-            // TODO Auto-generated method stub
-            
-        }
+      
+      
+     
     
     }
 
