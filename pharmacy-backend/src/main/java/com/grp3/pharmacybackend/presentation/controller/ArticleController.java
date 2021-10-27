@@ -21,7 +21,7 @@ public class ArticleController {
     
     @Autowired
     private IArticleService articleService;
-
+    
 
     // Obtenir la liste de tous les articles créés
     @GetMapping({"/articles"})
@@ -31,7 +31,7 @@ public class ArticleController {
     
     // Obtenez une liste des articles filtrée par nom
     @GetMapping({"/articles?name={name}"})
-    public List<ArticleDto> listByName(String name) {
+    public List<ArticleDto> listArticlesByName(String name) {
         return articleService.findArticlesByName(name);
     }
 
@@ -41,13 +41,13 @@ public class ArticleController {
         return articleService.findArticleById(id);
     }
 
-    // Créer un nouvel article
+    // Créer un nouvel article : createArticle
     @PostMapping({"/articles"})
 
-    // Mettre à jour l'article
+    // Mettre à jour l'article : updateArticle
     @PutMapping({"/articles/{id}"})
 
-    // Supprimer l'article par son identifiant
+    // Supprimer l'article par son identifiant : deleteArticle
     @DeleteMapping({"/posts/{id}"})
 
 }
