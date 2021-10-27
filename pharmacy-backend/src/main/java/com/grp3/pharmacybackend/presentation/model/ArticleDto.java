@@ -1,70 +1,84 @@
 package com.grp3.pharmacybackend.presentation.model;
 
 public class ArticleDto {
-    private Long id;
-    private Long barcode;
-    private String name;
-    private Integer quantity;
-    private Boolean availability;
-    
-    public Long getId() {
-        return this.id;
+    private Long idArticle;
+    private Long articleBarcode;
+    private String articleName;
+    private Double articlePrice;
+    private Integer articleQuantity;
+    private Boolean isArticleAvailable;
+
+
+    public ArticleDto() {
     }
 
-    public Long getBarcode() {
-        return this.barcode;
+    public ArticleDto(Long idArticle, Long articleBarcode, String articleName, Double articlePrice, Integer articleQuantity) {
+        this.idArticle = idArticle;
+        this.articleBarcode = articleBarcode;
+        this.articleName = articleName;
+        this.articlePrice = articlePrice;
+        this.articleQuantity = articleQuantity;
     }
 
-    public void setBarcode(Long barcode) {
-        this.barcode = barcode;
+
+    public Long getIdArticle() {
+        return this.idArticle;
     }
 
-    public String getName() {
-        return this.name;
+    public void setIdArticle(Long idArticle) {
+        this.idArticle = idArticle;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Long getArticleBarcode() {
+        return this.articleBarcode;
     }
 
-    public Integer getQuantity() {
-        return this.quantity;
+    public void setArticleBarcode(Long articleBarcode) {
+        this.articleBarcode = articleBarcode;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public String getArticleName() {
+        return this.articleName;
     }
 
-    public Boolean isAvailability() {
-        if (this.getQuantity() > 0) {
+    public void setArticleName(String articleName) {
+        this.articleName = articleName;
+    }
+
+    public Double getArticlePrice() {
+        return this.articlePrice;
+    }
+
+    public void setArticlePrice(Double articlePrice) {
+        this.articlePrice = articlePrice;
+    }
+
+    public Integer getArticleQuantity() {
+        return this.articleQuantity;
+    }
+
+    public void setArticleQuantity(Integer articleQuantity) {
+        this.articleQuantity = articleQuantity;
+    }
+
+    public Boolean isArticleAvailable() {
+        if (this.getArticleQuantity() > 0) {
             return true;
         } else {
             return false;
         }
     }
 
-    public Boolean getAvailability() {
-        return this.availability;
-    }
-
-    public ArticleDto() {
-    }
-
-    public ArticleDto(Long id, Long barcode, String name, Integer quantity) {
-        this.id = id;
-        this.barcode = barcode;
-        this.name = name;
-        this.quantity = quantity;
-    }
 
     @Override
     public String toString() {
         return "{" +
-            " id='" + getId() + "'" +
-            ", barcode='" + getBarcode() + "'" +
-            ", name='" + getName() + "'" +
-            ", quantity='" + getQuantity() + "'" +
-            ", availability='" + isAvailability() + "'" +
+            " idArticle='" + getIdArticle() + "'" +
+            ", articleBarcode='" + getArticleBarcode() + "'" +
+            ", articleName='" + getArticleName() + "'" +
+            ", articlePrice='" + getArticlePrice() + "'" +
+            ", articleQuantity='" + getArticleQuantity() + "'" +
+            ", isArticleAvailable='" + isArticleAvailable() + "'" +
             "}";
     }
 
