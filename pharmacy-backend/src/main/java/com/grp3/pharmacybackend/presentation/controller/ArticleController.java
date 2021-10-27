@@ -2,6 +2,7 @@ package com.grp3.pharmacybackend.presentation.controller;
 
 import java.util.List;
 
+import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
