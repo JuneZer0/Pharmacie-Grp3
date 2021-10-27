@@ -1,12 +1,11 @@
 package com.grp3.pharmacybackend.persistance.dao.impl;
 
 import com.grp3.pharmacybackend.persistance.dao.interfaces.T;
-import com.grp3.pharmacybackend.persistance.dao.interfaces.genericDao;
+import com.grp3.pharmacybackend.persistance.dao.interfaces.GenericDao;
 
-public class articleDaoImpl implements genericDao {
+public class ArticleDaoImpl implements GenericDao {
 
 
-    
     @Override
     public T save(T article) {
         // TODO Auto-generated method stub
