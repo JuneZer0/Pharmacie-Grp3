@@ -5,6 +5,9 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
+import com.grp3.pharmacybackend.persistance.dao.impl.ArticleDaoImpl;
+import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
+import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,11 +15,15 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional(rollbackOn = Propagation.REQUIRED)
 public class ArticleServiceImpl implements IArticleService{
+
+     @Autowired
+      private IArticleDao articleDao;
+
     
         @Override
         public List<ArticleDto> getAllArticles() {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapToListDesArticlesDto(articleDao.findAllArticles());
+            allArticles = mapToListDesArticlesDto(articleDao.findAll());
             return allArticles;
         }
      // trouver un article par son nom
@@ -35,13 +42,12 @@ public class ArticleServiceImpl implements IArticleService{
        
         //rajouter un article
         @Override
-        public String addArticle( ArticleDto articleDto) {
+        public void addArticle( ArticleDto articleDto) {
             
             Article article = new Article();
             article = mapToArticle(articleDto);
-    
-            final Article newArticle =  articleDao.save(article);
-            return newArticle.getId();
+            articleDao.save(article);
+           
         }
          // modifier un article
         

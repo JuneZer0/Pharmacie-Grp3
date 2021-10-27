@@ -16,7 +16,7 @@ public interface IArticleService {
     Optional<ArticleDto> findArticleById(Long id);
 
   
-    String addArticle(ArticleDto articleDto);
+    void addArticle(ArticleDto articleDto);
 
    
     void updateArticle(Long id, ArticleDto articleDto);

@@ -1,33 +1,12 @@
 package com.grp3.pharmacybackend.persistance.dao.impl;
 
-import com.grp3.pharmacybackend.persistance.dao.interfaces.T;
-import com.grp3.pharmacybackend.persistance.dao.interfaces.GenericDao;
+import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
+import com.grp3.pharmacybackend.persistance.entities.Article;
 
-public class ArticleDaoImpl implements GenericDao {
+import org.springframework.stereotype.Repository;
 
-
-    @Override
-    public T save(T article) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public Boolean delete(T article) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public T edit(T article) {
-        // TODO Auto-generated method stub
-        return null;
-    }
-
-    @Override
-    public T find(Long articleName) {
-        // TODO Auto-generated method stub
-        return null;
-    }
+@Repository
+public class ArticleDaoImpl extends AGenericDaoImpl<Article> implements IArticleDao{
     
+
 }
