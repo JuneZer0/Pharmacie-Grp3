@@ -9,7 +9,7 @@
       </property>
       
       <property name = "hibernate.connection.driver_class">
-         com.postgresql.jdbc.Driver // replace postgres
+         com.postgresql.jdbc.Driver  
       </property>
       
       <!-- Assume test is the database name -->
@@ -26,8 +26,7 @@
          password
       </property>
 
-      <property name="connection.url">jdbc:postgresql://localhost/Pharmacy?createDatabaseIfNotExist=true</property>
-      
+     <property name="hibernate.hbm2ddl.auto">create</property>
       <!-- List of XML mapping files -->
       <mapping resource = "Article.hbm.xml"/>
       
