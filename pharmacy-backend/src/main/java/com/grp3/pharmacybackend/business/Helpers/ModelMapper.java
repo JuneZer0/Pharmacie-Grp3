@@ -28,10 +28,10 @@ public class ModelMapper {
                 return null;
             }
             articleDto.setId(article.getId());
-            articleDto.setBarcode(article.getBarcode());
+            articleDto.setArticleBarcode(article.getBarcode());
             articleDto.setArticleName(article.getArticleName());
             articleDto.setArticleQuantity(article.getArticleQuantity());
-            articleDto.setarticlePrice(article.getarticlePrice());
+            articleDto.setArticlePrice(article.getArticlePrice());
             return articleDto;
         }
     

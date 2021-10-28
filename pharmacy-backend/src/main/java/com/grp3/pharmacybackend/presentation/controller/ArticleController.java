@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -47,6 +48,14 @@ public class ArticleController {
 
     // Mettre à jour l'article : updateArticle
     @PutMapping({"/articles/{id}"})
+    public void updateArticle(@PathVariable Long id, @RequestBody ArticleDto articleDto) {
+        ArticleDto updateArticleDto = articleService.findArticleById(id);
+        if (updateArticleDto != null) {
+            articleService.updateArticle(id, articleDto);
+        } else {
+            articleService.addArticle(articleDto);
+        }
+    }
 
     // Supprimer l'article par son identifiant : deleteArticle
     @DeleteMapping({"/posts/{id}"})
