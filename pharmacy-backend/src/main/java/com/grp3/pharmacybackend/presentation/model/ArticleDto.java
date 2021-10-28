@@ -18,6 +18,7 @@ public class ArticleDto {
         this.articleName = articleName;
         this.articlePrice = articlePrice;
         this.articleQuantity = articleQuantity;
+      
     }
 
 
