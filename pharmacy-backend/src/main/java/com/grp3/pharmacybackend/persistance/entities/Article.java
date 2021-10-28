@@ -2,35 +2,36 @@ package com.grp3.pharmacybackend.persistance.entities;
 
 import java.io.Serializable;
 
-import org.hibernate.annotations.Table;
-
-
-import org.hibernate.annotations.GenericGenerator;
 
 
 
-@Entity
-@Table(name = "article")
+
 public class Article implements Serializable {
 
-   	@Id
-	@GeneratedValue(generator = "article_id")
-	@GenericGenerator(name = "article_id", strategy = GenerationType.IDENTITY)
 
-	@Column (name= "article_id")
+
+
 	private Long articleId;
 
-	@Column (name= "article_barcode")
+	
 	private Long articleBarcode;
 
-	@Column (name= "article_name")
+	
 	private String articleName;
 
-	@Column (name= "article_quantity")
+	
 	private Integer articleQuantity;
 
-	@Column (name= "article_price")
+	
 	private Float articlePrice; 
+
+	public Float getArticlePrice() {
+		return this.articlePrice;
+	}
+
+	public void setArticlePrice(Float articlePrice) {
+		this.articlePrice = articlePrice;
+	}
 	
 
 	public Long getArticleId() {
