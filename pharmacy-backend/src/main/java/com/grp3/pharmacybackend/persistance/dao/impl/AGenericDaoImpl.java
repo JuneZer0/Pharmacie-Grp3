@@ -1,28 +1,25 @@
 package com.grp3.pharmacybackend.persistance.dao.impl;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
-import com.grp3.pharmacybackend.persistance.entities.Article;
 
-import org.hibernate.Criteria;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
-import org.hibernate.exception.DataException;
 import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-public abstract class AGenericDaoImpl <T extends Serializable> implements IGenericDao<T>{
+@SuppressWarnings("unchecked")
+public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     private Class<T> objDo;
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
     private  Session session;
     private  Transaction transaction;
@@ -30,17 +27,13 @@ public abstract class AGenericDaoImpl <T extends Serializable> implements IGener
 
 
     @Override
+    @Transactional
     public List<T> findAll(Class class1) {   
-        List<T> resultList = new ArrayList<T>();    
-        try {
-            startOperation();
-            Query query = session.createQuery("from" + class1.getName());
-            resultList = query.list();            
-            transaction.commit();
-        } catch (HibernateException e){
-            handleException(e)
-        }
-        
+        List<T> resultList = new ArrayList<T>();
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<T> query = currentSession.createQuery("from "+class1.getName(), class1);   
+        resultList = (List<T>) query.getResultList(); 
+        return resultList;            
     }
 
     @Override
@@ -79,24 +72,9 @@ public abstract class AGenericDaoImpl <T extends Serializable> implements IGener
     }
 
 
-    /**
-     * Opens a session and starts transaction
-     * @throws HibernateException
-     */
-    protected void startOperation() throws HibernateException {
-        session = sessionFactory.openSession();
-        transaction = session.beginTransaction();
-    }
+   
 
-    /**
-     * Handles hibernate
-     * @param e the exception to handle
-     * @throws DataAccessLayerException
-     */
-    protected void handleException(HibernateException e) throws DataAccessLayerException {
-        HibernateFactory.rollback(transaction);
-        throw new DataException(e);
-    }
+   
 
 
 
