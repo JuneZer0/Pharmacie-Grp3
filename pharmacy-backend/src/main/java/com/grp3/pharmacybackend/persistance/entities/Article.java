@@ -2,13 +2,7 @@ package com.grp3.pharmacybackend.persistance.entities;
 
 import java.io.Serializable;
 
-
-
-
-
 public class Article implements Serializable {
-
-
 
 
 	private Long articleId;
@@ -24,6 +18,8 @@ public class Article implements Serializable {
 
 	
 	private Float articlePrice; 
+
+
 
 	public Float getArticlePrice() {
 		return this.articlePrice;

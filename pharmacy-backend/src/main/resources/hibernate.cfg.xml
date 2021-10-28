@@ -3,32 +3,16 @@
 "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
    <session-factory>
-   
-      <property name = "dialect">
-        org.hibernate.dialect.PostgreSQLDialect
-      </property>
-      
-      <property name = "connection.driver_class">
-         com.postgresql.jdbc.Driver  
-      </property>
-      
-      <!-- Assume test is the database name -->
-      
-      <property name = "connection.url">
-         jdbc:postgresql://localhost:5432/Pharmacy  
-      </property>
-      
-      <property name = "connection.username">
-         userGrp3
-      </property>
-      
-      <property name = "connection.password">
-         password
-      </property>
 
-     <property name="hhbm2ddl.auto">create</property>
+      <property name = "hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</property>      
+      <property name = "hibernate.connection.driver_class">org.postgresql.Driver</property>
+      <property name = "hibernate.connection.url">jdbc:postgresql://localhost:5432/Pharmacy</property>
+      <property name = "hibernate.connection.username">userGrp3 </property>      
+      <property name = "hibernate.connection.password">password</property>
+      <property name = "hibernate.hbm2ddl.auto">update</property>
+      <property name="hibernate.current_session_context_class">thread</property>
       <!-- List of XML mapping files -->
-      <mapping resource = "Article.hbm.xml"/>
-      
-   </session-factory>
+      <mapping resource = "Article.hbm.xml"/>  
+
+  </session-factory>
 </hibernate-configuration>
