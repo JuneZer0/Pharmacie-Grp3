@@ -20,6 +20,9 @@ public class ArticleServiceImpl implements IArticleService{
       private IArticleDao articleDao;
 
     
+
+
+    //Afficher la liste de tous les articles créés
         @Override
         public List<ArticleDto> getAllArticles() {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
@@ -35,8 +38,8 @@ public class ArticleServiceImpl implements IArticleService{
         }
        // trouver un article par son id
        @Override
-       public Optional<ArticleDto> findArticleById(Long id) {
-           // TODO Auto-generated method stub
+       public ArticleDto findArticleById(Long id) {
+           
            return null;
        }
        
@@ -68,9 +71,7 @@ public class ArticleServiceImpl implements IArticleService{
           this.articleDao.deleteById(id); 
     
         }
-      
-      
-     
+
     
     }
 

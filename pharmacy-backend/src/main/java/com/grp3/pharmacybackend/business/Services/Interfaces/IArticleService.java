@@ -1,6 +1,5 @@
 package com.grp3.pharmacybackend.business.Services.Interfaces;
 import java.util.List;
-import java.util.Optional;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 
 
@@ -13,7 +12,7 @@ public interface IArticleService {
     List<ArticleDto> findArticlesByName(String articleName);
 
  
-    Optional<ArticleDto> findArticleById(Long id);
+    ArticleDto findArticleById(Long id);
 
   
     void addArticle(ArticleDto articleDto);

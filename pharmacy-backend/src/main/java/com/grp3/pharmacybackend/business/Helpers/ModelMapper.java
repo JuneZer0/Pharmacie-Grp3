@@ -2,11 +2,12 @@ package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.Optional;
+
 
 
 
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
+import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class ModelMapper {
             article.setArticleBarcode(articleDto.getArticleBarcode());
             article.setArticleName(articleDto.getArticleName());
             article.setArticleQuantity(articleDto.getArticleQuantity());
-            article.getIsAvailability(articleDto.getArticlePrice());
+            article.getArticlePrice(articleDto.getArticlePrice());
             return article;
         }
     
