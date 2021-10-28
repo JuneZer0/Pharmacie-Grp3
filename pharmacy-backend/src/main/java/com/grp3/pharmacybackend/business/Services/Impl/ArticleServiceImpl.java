@@ -23,9 +23,11 @@ public class ArticleServiceImpl implements IArticleService{
         @Override
         public List<ArticleDto> getAllArticles() {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapper.mapToListArticlesDto(articleDao.findAll(Article.class));
+            List<Article> articlesFromDatabase = articleDao.findAll(Article.class);
+            allArticles = mapper.mapToListArticlesDto(articlesFromDatabase);
             return allArticles;
         }
+
      // trouver un article par son nom
         @Override
         public List<ArticleDto> findArticlesByName(String articleName) {

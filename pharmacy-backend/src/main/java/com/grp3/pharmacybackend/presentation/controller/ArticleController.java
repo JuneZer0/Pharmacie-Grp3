@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8080")
 @RestController
 @RequestMapping("/api")
 public class ArticleController {
@@ -26,28 +26,28 @@ public class ArticleController {
     
 
     // Obtenir la liste de tous les articles créés
-    @GetMapping({"/articles"})
+    @GetMapping("/articles")
     public List<ArticleDto> listArticles() {
         return articleService.getAllArticles();
     }
     
     // Obtenez une liste des articles filtrée par nom
-    @GetMapping({"/articles?name={name}"})
+    @GetMapping("/articles?name={name}")
     public List<ArticleDto> listArticlesByName(String name) {
         return articleService.findArticlesByName(name);
     }
 
     // Obtenir un article par son identifiant
-    @GetMapping({"/articles/{id}"})
+    @GetMapping("/articles/{id}")
     public ArticleDto articleById(@PathVariable Long id) {
         return articleService.findArticleById(id);
     }
 
     // Créer un nouvel article : createArticle
-    @PostMapping({"/articles"})
+    @PostMapping("/articles")
 
     // Mettre à jour l'article : updateArticle
-    @PutMapping({"/articles/{id}"})
+    @PutMapping("/articles/{id}")
     public void updateArticle(@PathVariable Long id, @RequestBody ArticleDto articleDto) {
         ArticleDto updateArticleDto = articleService.findArticleById(id);
         if (updateArticleDto != null) {
@@ -58,7 +58,7 @@ public class ArticleController {
     }
 
     // Supprimer l'article par son identifiant : deleteArticle
-    @DeleteMapping({"/posts/{id}"})
+    @DeleteMapping("/posts/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         this.articleService.deleteArticle(id);
 

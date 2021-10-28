@@ -43,9 +43,11 @@ public class ModelMapper {
         
           //map une liste d'objets Do ---> liste d'objets Dto
         public List<ArticleDto> mapToListArticlesDto(final List<Article> listArticlesDo) {
-            final List<ArticleDto> listArticlesDto = new ArrayList<>();
+            System.out.println(listArticlesDo);
+            List<ArticleDto> listArticlesDto = new ArrayList<>();
             for (Article articleDo : listArticlesDo) {
-                listArticlesDto.add(this.mapToArticleDto(articleDo));
+                listArticlesDto.add(mapToArticleDto(articleDo));
+                System.out.println(articleDo.getArticleName());
             }
             return listArticlesDto;
         }

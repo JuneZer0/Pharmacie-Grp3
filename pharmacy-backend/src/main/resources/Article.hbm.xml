@@ -10,14 +10,14 @@
          This class contains the article detail. 
       </meta>
       
-      <id name = "articleId" type = "int" column = "id_article">
-         <generator class="native"/>
+      <id name = "articleId" type = "long" column = "id_article">
+         <generator class="increment"/>
       </id>
       
-      <property name = "articleBarcode" column = "aricle_barcode" type = "long" not-null = "true"/>
+      <property name = "articleBarcode" column = "article_barcode" type = "long" not-null = "true"/>
       <property name = "articleName" column = "article_name" type = "string" not-null = "true"/>
       <property name = "articleQuantity" column = "article_quantity" type = "int" not-null = "true"/>
-      <property name = "articlePrice" column = "article_price" type = "int" not-null = "true"/>
+      <property name = "articlePrice" column = "article_price" type = "float" not-null = "true"/>
       
    </class>
 </hibernate-mapping>
