@@ -53,8 +53,12 @@ public class ArticleServiceImpl implements IArticleService{
         
          @Override
          public void updateArticle(Long id, ArticleDto articleDto) {
-             // TODO Auto-generated method stub
-             
+            Article article = articleDao.findById(id).get();
+            article.setArticleBarcode(articleDto.getArticleBarcode());
+            article.setArticleName(articleDto.getArticleName());
+            article.setArticlePrice(articleDto.getArticlePrice());
+            article.setArticleQuantity(articleDto.getArticleQuantity());
+            articleDao.save(article);
          }
 
 
