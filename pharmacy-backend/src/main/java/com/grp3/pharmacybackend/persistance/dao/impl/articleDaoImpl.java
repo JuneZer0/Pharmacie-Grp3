@@ -1,6 +1,6 @@
 package com.grp3.pharmacybackend.persistance.dao.impl;
 
-import com.grp3.pharmacybackend.persistance.dao.interfaces.T;
+import com.grp3.pharmacybackend.persistance.dao.interfaces.;
 import com.grp3.pharmacybackend.persistance.dao.interfaces.genericDao;
 
 public class articleDaoImpl implements genericDao {

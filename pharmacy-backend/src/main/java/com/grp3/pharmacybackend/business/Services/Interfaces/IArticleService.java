@@ -13,7 +13,7 @@ public interface IArticleService {
     List<ArticleDto> findArticlesByName(String articleName);
 
  
-    Optional<ArticleDto> findArticleById(Long id);
+    ArticleDto findArticleById(Long id);
 
   
     String addArticle(ArticleDto articleDto);

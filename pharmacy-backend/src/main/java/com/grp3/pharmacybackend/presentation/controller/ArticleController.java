@@ -50,5 +50,8 @@ public class ArticleController {
 
     // Supprimer l'article par son identifiant : deleteArticle
     @DeleteMapping({"/posts/{id}"})
+    public void delete(@PathVariable(value = "id") Long id){
+        this.articleService.deleteArticle(id);
+
 
 }

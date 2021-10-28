@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.transaction.Transactional;
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
+import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,10 +14,13 @@ import org.springframework.stereotype.Service;
 @Transactional(rollbackOn = Propagation.REQUIRED)
 public class ArticleServiceImpl implements IArticleService{
     
+
+
+    //Afficher la liste de tous les articles créés
         @Override
         public List<ArticleDto> getAllArticles() {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapToListDesArticlesDto(articleDao.findAllArticles());
+            allArticles = mapToListDesArticlesDto(articleDao.findAll());
             return allArticles;
         }
      // trouver un article par son nom
@@ -28,14 +32,14 @@ public class ArticleServiceImpl implements IArticleService{
         }
        // trouver un article par son id
        @Override
-       public Optional<ArticleDto> findArticleById(Long id) {
-           // TODO Auto-generated method stub
+       public ArticleDto findArticleById(Long id) {
+           
            return null;
        }
        
         //rajouter un article
         @Override
-        public String addArticle( ArticleDto articleDto) {
+        public  addArticle( ArticleDto articleDto) {
             
             Article article = new Article();
             article = mapToArticle(articleDto);
@@ -58,9 +62,7 @@ public class ArticleServiceImpl implements IArticleService{
           this.articleDao.deleteById(id); 
     
         }
-      
-      
-     
+
     
     }
 
