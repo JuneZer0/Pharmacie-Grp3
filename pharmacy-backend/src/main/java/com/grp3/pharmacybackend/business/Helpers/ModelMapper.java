@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 
 
+
 public class ModelMapper {
    
         @Autowired
@@ -53,6 +54,12 @@ public class ModelMapper {
     
         
           //map une liste d'objets Do ---> liste d'objets Dto
-
+        private List<ArticleDto> mapToListArticlesDto(final List<Article> listArticlesDo) {
+            final List<ArticleDto> listArticlesDto = new ArrayList<>();
+            for (Article articleDo : listArticlesDo) {
+                listArticlesDto.add(mapToArticleDto(articleDo));
+            }
+            return listArticlesDto;
+        }
 
 }
