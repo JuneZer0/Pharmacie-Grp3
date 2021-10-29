@@ -13,7 +13,7 @@ public interface IGenericDao <T> {
     /**
     * @return a List of T objects from the database.
     */
-    public List<T> findAll(); 
+    public List<T> findAll(Class<T> classT); 
 
     /**
      * Get a T object by its name

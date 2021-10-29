@@ -1,0 +1,34 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-configuration SYSTEM 
+"http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+   <session-factory>
+   
+      <property name = "hibernate.dialect">
+        org.hibernate.dialect.PostgreSQLDialect
+      </property>
+      
+      <property name = "hibernate.connection.driver_class">
+         com.postgresql.jdbc.Driver  
+      </property>
+      
+      <!-- Assume test is the database name -->
+      
+      <property name = "hibernate.connection.url">
+         jdbc:postgresql://localhost/Pharmacy  
+      </property>
+      
+      <property name = "hibernate.connection.username">
+         userGrp3
+      </property>
+      
+      <property name = "hibernate.connection.password">
+         password
+      </property>
+
+     <property name="hibernate.hbm2ddl.auto">create</property>
+      <!-- List of XML mapping files -->
+      <mapping resource = "Article.hbm.xml"/>
+      
+   </session-factory>
+</hibernate-configuration>
