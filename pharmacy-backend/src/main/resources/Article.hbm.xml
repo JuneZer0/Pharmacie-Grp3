@@ -11,7 +11,7 @@
       </meta>
       
       <id name = "articleId" type = "long" column = "id_article">
-         <generator class="increment"/>
+         <generator class="identity"/>
       </id>
       
       <property name = "articleBarcode" column = "article_barcode" type = "long" not-null = "true"/>

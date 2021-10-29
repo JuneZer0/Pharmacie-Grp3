@@ -1,9 +1,12 @@
 package com.grp3.pharmacybackend.business.Services.Impl;
+import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import com.grp3.pharmacybackend.business.Helpers.ModelMapper;
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
+import com.grp3.pharmacybackend.persistance.dao.impl.AGenericDaoImpl;
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
@@ -38,8 +41,20 @@ public class ArticleServiceImpl implements IArticleService{
        // trouver un article par son id
        @Override
        public ArticleDto findArticleById(Long id) {
-           //TODO
-           return null;
+           ArticleDto articleDtoId = new ArticleDto();
+           Optional<Article> articleDo = articleDao.findById(id);
+
+           if(articleDo.isPresent()){
+               Article article = new Article();
+               article = articleDo.get();
+               articleDtoId = mapper.mapToArticleDto(article);
+               return articleDtoId;
+
+           }
+           throw new RuntimeException("that object does not exist");
+           
+
+           
        }
        
         //rajouter un article
