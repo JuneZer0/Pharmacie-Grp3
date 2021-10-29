@@ -95,9 +95,10 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public void deleteById(Long idObjDo) {
-        try {
+        try { 
             startOperation();
-            session.delete(idObjDo);
+            Query<T> query = session.createQuery("delete from Article a where a.articleId = :id");   
+            query.setParameter("id", idObjDo);
             session.getTransaction().commit();
         }
         catch(Exception e){
