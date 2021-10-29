@@ -99,6 +99,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             startOperation();
             Query<T> query = session.createQuery("delete from Article a where a.articleId = :id");   
             query.setParameter("id", idObjDo);
+            query.executeUpdate();
             session.getTransaction().commit();
         }
         catch(Exception e){
