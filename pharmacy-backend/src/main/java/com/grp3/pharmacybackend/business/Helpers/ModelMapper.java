@@ -1,14 +1,8 @@
 package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
-import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Propagation;
 
 
 

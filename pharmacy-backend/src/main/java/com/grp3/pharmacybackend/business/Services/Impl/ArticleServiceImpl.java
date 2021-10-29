@@ -1,12 +1,10 @@
 package com.grp3.pharmacybackend.business.Services.Impl;
-import java.rmi.NoSuchObjectException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.grp3.pharmacybackend.business.Helpers.ModelMapper;
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
-import com.grp3.pharmacybackend.persistance.dao.impl.AGenericDaoImpl;
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
