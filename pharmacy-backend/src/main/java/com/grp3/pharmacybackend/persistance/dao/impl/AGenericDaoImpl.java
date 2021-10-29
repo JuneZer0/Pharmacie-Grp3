@@ -18,15 +18,13 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     private Class<T> objDo;
 
     private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
-
+    private Session session = null;
 
     @Override
     public List<T> findAll(Class class1) {  
-        Session session=null; 
         List<T> resultList = new ArrayList<T>();
         try { 
-            session = sessionFactory.openSession();  
-            session.beginTransaction();
+            startOperation();
             Query<T> query = session.createQuery("from "+class1.getName(), class1);   
             resultList = (List<T>) query.getResultList();  
             session.getTransaction().commit();
@@ -36,8 +34,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         }      
         finally{
             if (session!=null && session.isOpen()){
-                session.close();
-                session=null;
+                closeOperation();
             }
         }
         return resultList;      
@@ -51,8 +48,22 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public Optional<T> findById(Long idObjDo) {
-        // TODO Auto-generated method stub
-        return null;
+        Optional<T> article = null;
+        try { 
+            startOperation();
+            Query<T> query = session.createQuery("FROM Article WHERE id_article ="+ idObjDo);   
+            article = query.uniqueResultOptional();  
+            session.getTransaction().commit();
+            }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                closeOperation();
+            }
+        }
+        return article;
     }
 
     @Override
@@ -74,11 +85,35 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public void deleteById(Long idObjDo) {
-        // TODO Auto-generated method stub
-        
+        try {
+            startOperation();
+            session.delete(idObjDo);
+            session.getTransaction().commit();
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                closeOperation();
+            }
+        }
     }
 
+    /**
+     * Open a session and begin a transaction
+     */
+    public void startOperation() {
+        session = sessionFactory.openSession();  
+        session.beginTransaction();
+    }
 
+    /**
+     * Close the session
+     */
+    public void closeOperation() {
+        session.close();
+        session=null;
+    }
    
 
    
