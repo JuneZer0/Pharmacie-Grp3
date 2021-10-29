@@ -24,29 +24,47 @@ public class ArticleController {
     @Autowired
     private IArticleService articleService;
     
-
-    // Obtenir la liste de tous les articles créés
+    /**
+     * Get the list of all articles
+     * @return the list of all articles
+     */
     @GetMapping("/articles")
     public List<ArticleDto> listArticles() {
         return articleService.getAllArticles();
     }
     
-    // Obtenez une liste des articles filtrée par nom
+    /**
+     * Get a list of articles with the same name
+     * @param name
+     * @return a list of articles with the same name
+     */
     @GetMapping("/articles?name={name}")
     public List<ArticleDto> listArticlesByName(String name) {
         return articleService.findArticlesByName(name);
     }
 
-    // Obtenir un article par son identifiant
+    /**
+     * Get an article by its id
+     * @param id
+     * @return an article
+     */
     @GetMapping("/articles/{id}")
     public ArticleDto articleById(@PathVariable Long id) {
         return articleService.findArticleById(id);
     }
 
-    // Créer un nouvel article : createArticle
+    /**
+     * Create an article
+     * @param articleDto
+     */
     @PostMapping("/articles")
+    // Créer un nouvel article : createArticle
 
-    // Mettre à jour l'article : updateArticle
+    /**
+     * Update an article
+     * @param id
+     * @param articleDto
+     */
     @PutMapping("/articles/{id}")
     public void updateArticle(@PathVariable Long id, @RequestBody ArticleDto articleDto) {
         ArticleDto updateArticleDto = articleService.findArticleById(id);
@@ -57,12 +75,13 @@ public class ArticleController {
         }
     }
 
-    // Supprimer l'article par son identifiant : deleteArticle
+    /**
+     * Delete an article
+     * @param id
+     */
     @DeleteMapping("/posts/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         this.articleService.deleteArticle(id);
-
-
-}
+    }
 
 }
