@@ -49,12 +49,8 @@ public class ArticleServiceImpl implements IArticleService{
                article = articleDo.get();
                articleDtoId = mapper.mapToArticleDto(article);
                return articleDtoId;
-
            }
            throw new RuntimeException("that object does not exist");
-           
-
-           
        }
        
         //rajouter un article
