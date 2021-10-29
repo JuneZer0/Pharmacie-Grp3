@@ -6,6 +6,8 @@ import com.grp3.pharmacybackend.persistance.entities.Article;
 
 
 public class ArticleDaoImpl extends AGenericDaoImpl<Article> implements IArticleDao{
+
+    
    
     
 

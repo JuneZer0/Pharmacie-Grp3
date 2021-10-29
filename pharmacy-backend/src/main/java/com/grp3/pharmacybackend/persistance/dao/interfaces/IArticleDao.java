@@ -6,5 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IArticleDao extends IGenericDao<Article>{
+   
+   
     
 }
