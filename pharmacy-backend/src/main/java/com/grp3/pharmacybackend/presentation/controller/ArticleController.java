@@ -38,8 +38,8 @@ public class ArticleController {
      * @param name
      * @return a list of articles with the same name
      */
-    @GetMapping("/articles?name={name}")
-    public List<ArticleDto> listArticlesByName(String name) {
+    @GetMapping("/articles/byname/{name}")
+    public List<ArticleDto> listArticlesByName(@PathVariable(value="name")String name) {
         return articleService.findArticlesByName(name);
     }
 
@@ -49,7 +49,7 @@ public class ArticleController {
      * @return an article
      */
     @GetMapping("/articles/{id}")
-    public ArticleDto articleById(@PathVariable Long id) {
+    public ArticleDto articleById(@PathVariable(value="id") Long id) {
         return articleService.findArticleById(id);
     }
 
@@ -70,7 +70,7 @@ public class ArticleController {
      * @param articleDto
      */
     @PutMapping("/articles/{id}")
-    public void updateArticle(@PathVariable Long id, @RequestBody ArticleDto articleDto) {
+    public void updateArticle(@PathVariable(value="id") Long id, @RequestBody ArticleDto articleDto) {
         ArticleDto updateArticleDto = articleService.findArticleById(id);
         if (updateArticleDto != null) {
             articleService.updateArticle(id, articleDto);
@@ -83,7 +83,7 @@ public class ArticleController {
      * Delete an article
      * @param id
      */
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/articles/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         this.articleService.deleteArticle(id);
     }

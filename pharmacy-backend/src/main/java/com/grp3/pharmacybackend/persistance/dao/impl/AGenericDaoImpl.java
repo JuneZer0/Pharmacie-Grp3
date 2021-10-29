@@ -22,6 +22,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public List<T> findAll(Class class1) {  
+        System.out.println("FINDALL");
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
@@ -42,10 +43,12 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public Optional<T> findById(Long idObjDo) {
-        Optional<T> article = null;
+        System.out.println("FINDONEBYID");
+        Optional<T> article = Optional.empty();
         try { 
             startOperation();
-            Query<T> query = session.createQuery("FROM article WHERE id_article ="+ idObjDo);   
+            Query<T> query = session.createQuery("from Article a where a.articleId = :id");   
+            query.setParameter("id", idObjDo);
             article = query.uniqueResultOptional();  
             session.getTransaction().commit();
         }
@@ -62,10 +65,13 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public List<T> findAllByNameContaining(String objDoName) {
+        System.out.println("FIND ALL BY NAME");
+        System.out.println(objDoName);
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
-            Query<T> query = session.createQuery("FROM article WHERE article_name ="+ objDoName);   
+            Query<T> query = session.createQuery("from Article a where a.articleName like :name");  
+            query.setParameter("name", objDoName);
             resultList = (List<T>) query.getResultList();
             session.getTransaction().commit();
         }
