@@ -1,0 +1,23 @@
+<?xml version = "1.0" encoding = "utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd"> 
+
+<hibernate-mapping package ="com.grp3.pharmacybackend.persistance.entities">
+   <class name = "Article" table = "article">
+      
+      <meta attribute = "class-description">
+         This class contains the article detail. 
+      </meta>
+      
+      <id name = "articleId" type = "long" column = "id_article">
+         <generator class="increment"/>
+      </id>
+      
+      <property name = "articleBarcode" column = "article_barcode" type = "long" not-null = "true"/>
+      <property name = "articleName" column = "article_name" type = "string" not-null = "true"/>
+      <property name = "articleQuantity" column = "article_quantity" type = "int" not-null = "true"/>
+      <property name = "articlePrice" column = "article_price" type = "float" not-null = "true"/>
+      
+   </class>
+</hibernate-mapping>

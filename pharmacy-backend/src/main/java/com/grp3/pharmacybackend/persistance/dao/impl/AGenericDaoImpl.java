@@ -8,33 +8,40 @@ import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
 
 @SuppressWarnings("unchecked")
 public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
+   
     private Class<T> objDo;
 
-    @Autowired
-    private SessionFactory sessionFactory;
-
-    private  Session session;
-    private  Transaction transaction;
-
+    private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
 
 
     @Override
-    @Transactional
-    public List<T> findAll(Class class1) {   
+    public List<T> findAll(Class class1) {  
+        Session session=null; 
         List<T> resultList = new ArrayList<T>();
-        Session currentSession = sessionFactory.getCurrentSession();
-        Query<T> query = currentSession.createQuery("from "+class1.getName(), class1);   
-        resultList = (List<T>) query.getResultList(); 
-        return resultList;            
-    }
+        try { 
+            session = sessionFactory.openSession();  
+            session.beginTransaction();
+            Query<T> query = session.createQuery("from "+class1.getName(), class1);   
+            resultList = (List<T>) query.getResultList();  
+            session.getTransaction().commit();
+            }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                session.close();
+                session=null;
+            }
+        }
+        return resultList;      
+     }
 
     @Override
     public Optional<T> findByName(String objDoName) {

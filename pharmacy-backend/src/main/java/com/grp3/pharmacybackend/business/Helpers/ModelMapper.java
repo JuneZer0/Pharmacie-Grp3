@@ -13,30 +13,27 @@ import org.springframework.transaction.annotation.Propagation;
 
 
 public class ModelMapper {
-   
-        @Autowired
-        private IArticleDao articleDao;
-    
-       
+             
+      
          // map un article ---> articleDto
         
-        private ArticleDto mapToArticleDto(Article article) {
+        public ArticleDto mapToArticleDto(Article article) {
             ArticleDto articleDto = new ArticleDto();
             if (article == null) {
                 return null;
             }
-            articleDto.setId(article.getId());
-            articleDto.setArticleBarcode(article.getBarcode());
+            articleDto.setIdArticle(article.getArticleId());
+            articleDto.setArticleBarcode(article.getArticleBarcode());
             articleDto.setArticleName(article.getArticleName());
             articleDto.setArticleQuantity(article.getArticleQuantity());
-            articleDto.setArticlePrice(article.getArticlePrice());
+            articleDto.setArticlePrice(article.getArticlePrice().doubleValue());
             return articleDto;
         }
     
         
           //map un articleDto ---> article
         
-        private Article mapToArticle(final ArticleDto articleDto) {
+        public Article mapToArticle(final ArticleDto articleDto) {
             final Article article= new Article();
             if (articleDto == null) {
                 return null;
@@ -44,16 +41,18 @@ public class ModelMapper {
             article.setArticleBarcode(articleDto.getArticleBarcode());
             article.setArticleName(articleDto.getArticleName());
             article.setArticleQuantity(articleDto.getArticleQuantity());
-            article.setArticlePrice(articleDto.getArticlePrice());
+            article.setArticlePrice(articleDto.getArticlePrice().floatValue());
             return article;
         }
     
         
           //map une liste d'objets Do ---> liste d'objets Dto
-        private List<ArticleDto> mapToListArticlesDto(final List<Article> listArticlesDo) {
-            final List<ArticleDto> listArticlesDto = new ArrayList<>();
+        public List<ArticleDto> mapToListArticlesDto(final List<Article> listArticlesDo) {
+            System.out.println(listArticlesDo);
+            List<ArticleDto> listArticlesDto = new ArrayList<>();
             for (Article articleDo : listArticlesDo) {
                 listArticlesDto.add(mapToArticleDto(articleDo));
+                System.out.println(articleDo.getArticleName());
             }
             return listArticlesDto;
         }
