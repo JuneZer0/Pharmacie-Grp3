@@ -22,7 +22,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public List<T> findAll(Class class1) {  
-        System.out.println("FINDALL");
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
@@ -43,7 +42,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public Optional<T> findById(Long idObjDo) {
-        System.out.println("FINDONEBYID");
         Optional<T> article = Optional.empty();
         try { 
             startOperation();
@@ -65,8 +63,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public List<T> findAllByNameContaining(String objDoName) {
-        System.out.println("FIND ALL BY NAME");
-        System.out.println(objDoName);
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
