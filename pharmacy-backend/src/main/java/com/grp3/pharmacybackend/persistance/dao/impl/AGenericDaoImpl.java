@@ -8,10 +8,8 @@ import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
-import org.springframework.transaction.annotation.Transactional;
 
 @SuppressWarnings("unchecked")
 public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
@@ -19,7 +17,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
    
     private Class<T> objDo;
 
-    SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
+    private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
 
 
     @Override
