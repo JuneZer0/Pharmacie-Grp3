@@ -18,15 +18,13 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     private Class<T> objDo;
 
     private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
-
+    private Session session = null;
 
     @Override
     public List<T> findAll(Class class1) {  
-        Session session=null; 
         List<T> resultList = new ArrayList<T>();
         try { 
-            session = sessionFactory.openSession();  
-            session.beginTransaction();
+            startOperation();
             Query<T> query = session.createQuery("from "+class1.getName(), class1);   
             resultList = (List<T>) query.getResultList();  
             session.getTransaction().commit();
@@ -36,8 +34,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         }      
         finally{
             if (session!=null && session.isOpen()){
-                session.close();
-                session=null;
+                closeOperation();
             }
         }
         return resultList;      
@@ -74,11 +71,29 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public void deleteById(Long idObjDo) {
-        // TODO Auto-generated method stub
-        
+        try {
+            startOperation();
+            session.delete(idObjDo);
+            session.getTransaction().commit();
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                closeOperation();
+            }
+        }
     }
 
+    public void startOperation() {
+        session = sessionFactory.openSession();  
+        session.beginTransaction();
+    }
 
+    public void closeOperation() {
+        session.close();
+        session=null;
+    }
    
 
    
