@@ -38,8 +38,10 @@ public class ArticleServiceImpl implements IArticleService{
        // trouver un article par son id
        @Override
        public ArticleDto findArticleById(Long id) {
-           //TODO
-           return null;
+           ArticleDto articleDtoId = new ArticleDto();
+           articleDtoId = mapper.mapToArticleDto(articleDao.findById(id));
+
+           return articleDtoId;
        }
        
         //rajouter un article
