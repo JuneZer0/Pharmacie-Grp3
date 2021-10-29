@@ -56,15 +56,6 @@ public interface IGenericDao <T> {
      */
     public void deleteById(final Long idObjDo);
 
-    /**
-     * Open a session and begin a transaction
-     */
-    public void startOperation();
-
-    /**
-     * Close the session
-     */
-    public void closeOperation();
 
 } 
     

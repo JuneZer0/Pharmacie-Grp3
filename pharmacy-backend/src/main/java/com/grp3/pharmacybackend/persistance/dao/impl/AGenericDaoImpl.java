@@ -48,8 +48,22 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public Optional<T> findById(Long idObjDo) {
-        // TODO Auto-generated method stub
-        return null;
+        Optional<T> article = null;
+        try { 
+            startOperation();
+            Query<T> query = session.createQuery("FROM Article WHERE id_article ="+ idObjDo);   
+            article = query.uniqueResultOptional();  
+            session.getTransaction().commit();
+            }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                closeOperation();
+            }
+        }
+        return article;
     }
 
     @Override
@@ -85,11 +99,17 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         }
     }
 
+    /**
+     * Open a session and begin a transaction
+     */
     public void startOperation() {
         session = sessionFactory.openSession();  
         session.beginTransaction();
     }
 
+    /**
+     * Close the session
+     */
     public void closeOperation() {
         session.close();
         session=null;
