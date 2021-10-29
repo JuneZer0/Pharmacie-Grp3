@@ -38,12 +38,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             }
         }
         return resultList;      
-     }
-
-    @Override
-    public Optional<T> findByName(String objDoName) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
     @Override
@@ -51,10 +45,10 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         Optional<T> article = null;
         try { 
             startOperation();
-            Query<T> query = session.createQuery("FROM Article WHERE id_article ="+ idObjDo);   
+            Query<T> query = session.createQuery("FROM article WHERE id_article ="+ idObjDo);   
             article = query.uniqueResultOptional();  
             session.getTransaction().commit();
-            }
+        }
         catch(Exception e){
             System.out.println(e.getMessage());
         }      
@@ -67,9 +61,23 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     }
 
     @Override
-    public List findAllByNameContaining(String objDoName) {
-        // TODO Auto-generated method stub
-        return null;
+    public List<T> findAllByNameContaining(String objDoName) {
+        List<T> resultList = new ArrayList<T>();
+        try { 
+            startOperation();
+            Query<T> query = session.createQuery("FROM article WHERE article_name ="+ objDoName);   
+            resultList = (List<T>) query.getResultList();
+            session.getTransaction().commit();
+        }
+        catch(Exception e){
+            System.out.println(e.getMessage());
+        }      
+        finally{
+            if (session!=null && session.isOpen()){
+                closeOperation();
+            }
+        }
+        return resultList; 
     }
 
     @Override
@@ -89,6 +97,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             startOperation();
             session.delete(idObjDo);
             session.getTransaction().commit();
+        }
         catch(Exception e){
             System.out.println(e.getMessage());
         }      
@@ -114,11 +123,5 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         session.close();
         session=null;
     }
-   
-
-   
-
-
-
 
 }
