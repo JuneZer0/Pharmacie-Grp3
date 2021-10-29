@@ -54,7 +54,17 @@ public interface IGenericDao <T> {
      * Delete a T object in the database using its ID.
      * @param idObjDo the id of the T object to delete from the database.
      */
-    public void deleteById(final Long idObjDo); 
+    public void deleteById(final Long idObjDo);
+
+    /**
+     * Open a session and begin a transaction
+     */
+    public void startOperation();
+
+    /**
+     * Close the session
+     */
+    public void closeOperation();
 
 } 
     
