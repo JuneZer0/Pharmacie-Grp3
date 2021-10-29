@@ -9,7 +9,7 @@
       <property name = "hibernate.connection.url">jdbc:postgresql://localhost:5432/Pharmacy</property>
       <property name = "hibernate.connection.username">userGrp3 </property>      
       <property name = "hibernate.connection.password">password</property>
-      <property name = "hibernate.hbm2ddl.auto">update</property>
+      <property name = "hibernate.hbm2ddl.auto">create</property>
       <property name="hibernate.current_session_context_class">thread</property>
       <!-- List of XML mapping files -->
       <mapping resource = "Article.hbm.xml"/>  
