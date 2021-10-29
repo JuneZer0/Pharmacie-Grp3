@@ -6,7 +6,6 @@ import java.util.Optional;
 
 import com.grp3.pharmacybackend.business.Helpers.ModelMapper;
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
-import com.grp3.pharmacybackend.persistance.dao.impl.AGenericDaoImpl;
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
@@ -17,7 +16,7 @@ import org.springframework.stereotype.Service;
 public class ArticleServiceImpl implements IArticleService{
 
      @Autowired
-      private IArticleDao articleDao;
+     private IArticleDao articleDao;
 
       private ModelMapper mapper = new ModelMapper();
    
