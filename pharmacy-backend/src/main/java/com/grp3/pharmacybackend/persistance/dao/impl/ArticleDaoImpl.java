@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ArticleDaoImpl extends AGenericDaoImpl<Article> implements IArticleDao{
+
+    
    
     
 

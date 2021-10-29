@@ -58,7 +58,11 @@ public class ArticleController {
      * @param articleDto
      */
     @PostMapping("/articles")
-    // Créer un nouvel article : createArticle
+    public void createArticle(ArticleDto articleDto) {
+        this.articleService.addArticle(articleDto);
+
+    }
+   
 
     /**
      * Update an article
