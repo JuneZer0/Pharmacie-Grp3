@@ -62,7 +62,6 @@ public class ArticleController {
         this.articleService.addArticle(articleDto);
 
     }
-   
 
     /**
      * Update an article
@@ -83,7 +82,7 @@ public class ArticleController {
      * Delete an article
      * @param id
      */
-    @DeleteMapping("/posts/{id}")
+    @DeleteMapping("/articles/{id}")
     public void delete(@PathVariable(value = "id") Long id){
         this.articleService.deleteArticle(id);
     }
