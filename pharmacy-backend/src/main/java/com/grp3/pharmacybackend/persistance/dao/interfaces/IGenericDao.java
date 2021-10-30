@@ -16,26 +16,17 @@ public interface IGenericDao <T> {
     public List<T> findAll(Class<T> classT); 
 
     /**
-     * Get a T object by its name
-     * @param objDoName the name of the object to retrieve
-     * @return an Optional of type T
-     */ 
-    public Optional<T> findByName(final String objDoName);
-
-
-    /**
      * Gets a T object from the database using its ID to find it.
      * @param idObjDo the id of the object we want to find
      * @return an Optional of type T that has the provided id.
      */
     public Optional<T> findById(final Long idObjDo);
 
-
     /**
      * @param objDoName the name of the objects to retrieve
      * @return a List of T objects containing the given name
      */
-    public List<T>findAllByNameContaining(final String objDoName);
+    public List<T> findAllByNameContaining(final String objDoName);
 
     /**
      * Creates a T object in the database
@@ -49,12 +40,12 @@ public interface IGenericDao <T> {
      */
     public void update(final T objDoToUpdate);
 
-
     /**
      * Delete a T object in the database using its ID.
      * @param idObjDo the id of the T object to delete from the database.
      */
-    public void deleteById(final Long idObjDo); 
+    public void deleteById(final Long idObjDo);
+
 
 } 
     
