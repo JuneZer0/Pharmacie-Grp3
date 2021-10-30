@@ -1,27 +1,39 @@
 package com.grp3.pharmacybackend.persistance.dao.impl;
 
-import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
-public abstract class AGenericDaoImpl <T extends Serializable> implements IGenericDao<T>{
+@SuppressWarnings("unchecked")
+public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     private Class<T> objDo;
 
     @Autowired
-    protected SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
+
+    private  Session session;
+    private  Transaction transaction;
 
 
 
     @Override
-    public List<T> findAll() {
-        // TODO Auto-generated method stub
-        return null;
+    @Transactional
+    public List<T> findAll(Class class1) {   
+        List<T> resultList = new ArrayList<T>();
+        Session currentSession = sessionFactory.getCurrentSession();
+        Query<T> query = currentSession.createQuery("from "+class1.getName(), class1);   
+        resultList = (List<T>) query.getResultList(); 
+        return resultList;            
     }
 
     @Override
@@ -59,6 +71,10 @@ public abstract class AGenericDaoImpl <T extends Serializable> implements IGener
         
     }
 
+
+   
+
+   
 
 
 

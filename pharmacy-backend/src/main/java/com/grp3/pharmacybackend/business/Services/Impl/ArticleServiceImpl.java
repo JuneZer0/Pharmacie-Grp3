@@ -18,15 +18,13 @@ public class ArticleServiceImpl implements IArticleService{
 
      @Autowired
       private IArticleDao articleDao;
-
-    
-
+   
 
     //Afficher la liste de tous les articles créés
         @Override
         public List<ArticleDto> getAllArticles() {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapToListDesArticlesDto(articleDao.findAll());
+            allArticles = mapToListDesArticlesDto(articleDao.findAll(Article.class));
             return allArticles;
         }
      // trouver un article par son nom

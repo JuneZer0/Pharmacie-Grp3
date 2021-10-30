@@ -2,17 +2,14 @@ package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-
-
-
-
 import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
+import com.grp3.pharmacybackend.persistance.dao.interfaces.IArticleDao;
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
+
 
 
 public class ModelMapper {
@@ -47,12 +44,18 @@ public class ModelMapper {
             article.setArticleBarcode(articleDto.getArticleBarcode());
             article.setArticleName(articleDto.getArticleName());
             article.setArticleQuantity(articleDto.getArticleQuantity());
-            article.getArticlePrice(articleDto.getArticlePrice());
+            article.setArticlePrice(articleDto.getArticlePrice());
             return article;
         }
     
         
           //map une liste d'objets Do ---> liste d'objets Dto
-
+        private List<ArticleDto> mapToListArticlesDto(final List<Article> listArticlesDo) {
+            final List<ArticleDto> listArticlesDto = new ArrayList<>();
+            for (Article articleDo : listArticlesDo) {
+                listArticlesDto.add(mapToArticleDto(articleDo));
+            }
+            return listArticlesDto;
+        }
 
 }
