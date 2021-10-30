@@ -16,6 +16,13 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
    
     private Class<T> objDo;
+    private Object ojDoBarcode;
+
+    private Object objDoName;
+
+    private Object objDoQuantity;
+
+    private Object objDoPrice;
 
     private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
     private Session session = null;
@@ -84,7 +91,28 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
     @Override
     public void save(T objDoToCreate) {
-        return;     
+        
+        
+            try { 
+                startOperation();
+                Query<T> query = session.createQuery("INSERT INTO Article article_barcode= :barcode, article_name= :, article_quantity= :quantity ,article_price= :price"  + objDoToCreate); 
+		        query.setParameter("barcode", ojDoBarcode);  
+		        query.setParameter("name", objDoName);  
+		        query.setParameter("quantity", objDoQuantity);  
+		        query.setParameter("price", objDoPrice); 
+                int result = query.executeUpdate(); 
+                session.save(result);
+                session.getTransaction().commit();
+            }
+            catch(Exception e){
+                System.out.println(e.getMessage());
+            }      
+            finally{
+                if (session!=null && session.isOpen()){
+                    closeOperation();
+                }
+            }
+   
     }
 
     @Override
