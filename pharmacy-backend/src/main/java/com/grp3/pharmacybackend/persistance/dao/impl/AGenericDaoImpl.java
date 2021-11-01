@@ -12,7 +12,7 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.query.Query;
 
 @SuppressWarnings("unchecked")
-public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
+public abstract class AGenericDaoImpl <T> implements IGenericDao<T> {
 
    
     private Class<T> objDo;
@@ -21,7 +21,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     private Session session = null;
 
     @Override
-    public List<T> findAll(Class class1) {  
+    public List<T> findAll(final Class class1) {  
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
@@ -41,11 +41,11 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     }
 
     @Override
-    public Optional<T> findById(Long idObjDo) {
+    public Optional<T> findById(final Long idObjDo, final Class class1, final String queryField) {
         Optional<T> article = Optional.empty();
         try { 
             startOperation();
-            Query<T> query = session.createQuery("from Article a where a.articleId = :id");   
+            Query<T> query = session.createQuery("from "+class1.getName()+" a where "+queryField+" = :id");   
             query.setParameter("id", idObjDo);
             article = query.uniqueResultOptional();  
             session.getTransaction().commit();
@@ -62,11 +62,11 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
     }
 
     @Override
-    public List<T> findAllByNameContaining(String objDoName) {
+    public List<T> findAllByNameContaining(final String objDoName, final Class class1, final String queryField) {
         List<T> resultList = new ArrayList<T>();
         try { 
             startOperation();
-            Query<T> query = session.createQuery("from Article a where a.articleName like :name");  
+            Query<T> query = session.createQuery("from "+class1.getName()+" a where "+queryField+" like :name");  
             query.setParameter("name", objDoName);
             resultList = (List<T>) query.getResultList();
             session.getTransaction().commit();
@@ -75,29 +75,32 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             System.out.println(e.getMessage());
         }      
         finally{
-            if (session!=null && session.isOpen()){
+           
                 closeOperation();
-            }
+          
         }
         return resultList; 
     }
 
     @Override
-    public void save(T objDoToCreate) {
-        return;     
+    public void save(final T objDoToCreate) {
+       try { startOperation();
+        session.saveOrUpdate(objDoToCreate); 
+        session.getTransaction().commit();
+       }
+       catch(Exception e){
+           System.out.println(e.getMessage());
+       }
+       finally{
+          closeOperation();
+       }
     }
 
     @Override
-    public void update(T objDoToUpdate) {
-        // TODO Auto-generated method stub
-        
-    }
-
-    @Override
-    public void deleteById(Long idObjDo) {
+    public void deleteById(final Long idObjDo, final Class class1, final String queryField) {
         try { 
             startOperation();
-            Query<T> query = session.createQuery("delete from Article a where a.articleId = :id");   
+            Query<T> query = session.createQuery("delete from "+class1.getName()+" a where "+queryField+" = :id");   
             query.setParameter("id", idObjDo);
             query.executeUpdate();
             session.getTransaction().commit();
@@ -106,9 +109,9 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             System.out.println(e.getMessage());
         }      
         finally{
-            if (session!=null && session.isOpen()){
+           
                 closeOperation();
-            }
+           
         }
     }
 
@@ -124,8 +127,10 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
      * Close the session
      */
     public void closeOperation() {
+        if (session!=null && session.isOpen()){
         session.close();
         session=null;
+        }
     }
 
 }

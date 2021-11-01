@@ -6,6 +6,7 @@ import com.grp3.pharmacybackend.business.Services.Interfaces.IArticleService;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 @CrossOrigin(origins = "http://localhost:8080")
@@ -35,7 +37,7 @@ public class ArticleController {
     
     /**
      * Get a list of articles with the same name
-     * @param name
+     * @param name the name of the articles we want to find
      * @return a list of articles with the same name
      */
     @GetMapping("/articles/byname/{name}")
@@ -45,7 +47,7 @@ public class ArticleController {
 
     /**
      * Get an article by its id
-     * @param id
+     * @param id the id of the article we want to find
      * @return an article
      */
     @GetMapping("/articles/{id}")
@@ -54,33 +56,28 @@ public class ArticleController {
     }
 
     /**
-     * Create an article
-     * @param articleDto
+     * Create an article 
+     * @param articleDto the article to create
      */
     @PostMapping("/articles")
-    public void createArticle(ArticleDto articleDto) {
+    @ResponseStatus(value=HttpStatus.CREATED)
+    public void createArticle(@RequestBody ArticleDto articleDto) {
         this.articleService.addArticle(articleDto);
 
     }
 
     /**
      * Update an article
-     * @param id
-     * @param articleDto
+     * @param articleDto the article to be updated
      */
-    @PutMapping("/articles/{id}")
-    public void updateArticle(@PathVariable(value="id") Long id, @RequestBody ArticleDto articleDto) {
-        ArticleDto updateArticleDto = articleService.findArticleById(id);
-        if (updateArticleDto != null) {
-            articleService.updateArticle(id, articleDto);
-        } else {
-            articleService.addArticle(articleDto);
-        }
+    @PutMapping("/articles/")
+    public void updateArticle(@RequestBody ArticleDto articleDto) {
+             articleService.addArticle(articleDto);       
     }
 
     /**
      * Delete an article
-     * @param id
+     * @param id the id of the object we want to delete
      */
     @DeleteMapping("/articles/{id}")
     public void delete(@PathVariable(value = "id") Long id){
