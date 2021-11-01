@@ -33,14 +33,11 @@ public interface IArticleService {
      */
     void addArticle(ArticleDto articleDto);
 
-   /**
-    * Calls the save method, since it does the same thing.
-    * @see {@link IArticleService#addArticle}
-    * @param articleDto the article to update.
-    */
-    void updateArticle(ArticleDto articleDto);
 
-    
+    /**
+     * Deletes an article with its id
+     * @param id the id of the article to delete
+     */
     void deleteArticle(Long id);
 
 }
