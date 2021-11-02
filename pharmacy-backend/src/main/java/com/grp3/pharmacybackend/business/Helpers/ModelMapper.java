@@ -1,7 +1,6 @@
 package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
@@ -35,6 +34,7 @@ public class ModelMapper {
             if (articleDto == null) {
                 return null;
             }
+            article.setArticleId(articleDto.getIdArticle());
             article.setArticleBarcode(articleDto.getArticleBarcode());
             article.setArticleName(articleDto.getArticleName());
             article.setArticleQuantity(articleDto.getArticleQuantity());

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-@CrossOrigin(origins = "http://localhost:8080")
+@CrossOrigin(origins = "http://localhost:8081")
 @RestController
 @RequestMapping("/api")
 public class ArticleController {
@@ -70,8 +70,9 @@ public class ArticleController {
      * Update an article
      * @param articleDto the article to be updated
      */
-    @PutMapping("/articles/")
+    @PutMapping("/articles")
     public void updateArticle(@RequestBody ArticleDto articleDto) {
+             System.out.println(articleDto.getIdArticle());
              articleService.addArticle(articleDto);       
     }
 

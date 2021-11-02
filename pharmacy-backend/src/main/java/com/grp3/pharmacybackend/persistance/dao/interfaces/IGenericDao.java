@@ -36,7 +36,7 @@ public interface IGenericDao <T> {
      * Creates a T object in the database
      * @param objDoToCreate the T object to create in the database
      */
-    public void save(final T objDoToCreate); 
+    public void save(final T objDoToCreate, Long id); 
     
    
     /**

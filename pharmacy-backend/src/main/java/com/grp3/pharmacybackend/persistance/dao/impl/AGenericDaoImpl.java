@@ -83,9 +83,14 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T> {
     }
 
     @Override
-    public void save(final T objDoToCreate) {
-       try { startOperation();
-        session.saveOrUpdate(objDoToCreate); 
+    public void save(final T objDoToCreate, Long id) {
+       try { 
+           
+        startOperation();
+
+        session.saveOrUpdate(objDoToCreate);
+        
+
         session.getTransaction().commit();
        }
        catch(Exception e){

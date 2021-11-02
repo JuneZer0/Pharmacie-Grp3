@@ -58,7 +58,7 @@ public class ArticleServiceImpl implements IArticleService{
             
             Article article = new Article();
             article = mapper.mapToArticle(articleDto);
-            articleDao.save(article);
+            articleDao.save(article, article.getArticleId());
            
         }
        
