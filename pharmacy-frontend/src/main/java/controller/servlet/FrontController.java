@@ -16,11 +16,17 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "dispatcher", displayName = "/app/dispatcher", urlPatterns = "/*")
 public class FrontController extends HttpServlet {
        
+    
     @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-    
+    String nextPage = request.getRequestURI();
+
+
+    //TODO SECURITY GOES HERE
+
+
     
 
 
