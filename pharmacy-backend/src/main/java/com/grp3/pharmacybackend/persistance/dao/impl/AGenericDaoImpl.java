@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
+import com.grp3.pharmacybackend.persistance.entities.Article;
 
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -15,14 +16,7 @@ import org.hibernate.query.Query;
 public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
 
    
-    private Class<T> objDo;
-    private Object ojDoBarcode;
-
-    private Object objDoName;
-
-    private Object objDoQuantity;
-
-    private Object objDoPrice;
+ 
 
     private static final SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();   
     private Session session = null;
@@ -57,6 +51,7 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
             article = query.uniqueResultOptional();  
             session.getTransaction().commit();
         }
+        
         catch(Exception e){
             System.out.println(e.getMessage());
         }      
@@ -89,19 +84,14 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
         return resultList; 
     }
 
+   
+
     @Override
     public void save(T objDoToCreate) {
-        
-        
+       
             try { 
-                startOperation();
-                Query<T> query = session.createQuery("INSERT INTO Article article_barcode= :barcode, article_name= :, article_quantity= :quantity ,article_price= :price"  + objDoToCreate); 
-		        query.setParameter("barcode", ojDoBarcode);  
-		        query.setParameter("name", objDoName);  
-		        query.setParameter("quantity", objDoQuantity);  
-		        query.setParameter("price", objDoPrice); 
-                int result = query.executeUpdate(); 
-                session.save(result);
+                startOperation();   
+                session.saveOrUpdate(objDoToCreate);
                 session.getTransaction().commit();
             }
             catch(Exception e){
@@ -112,14 +102,11 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T>{
                     closeOperation();
                 }
             }
-   
-    }
+        }
 
-    @Override
-    public void update(T objDoToUpdate) {
-        // TODO Auto-generated method stub
-        
-    }
+
+
+    
 
     @Override
     public void deleteById(Long idObjDo) {
