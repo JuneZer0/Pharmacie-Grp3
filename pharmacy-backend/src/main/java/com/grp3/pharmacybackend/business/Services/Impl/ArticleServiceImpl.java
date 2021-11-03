@@ -33,14 +33,14 @@ public class ArticleServiceImpl implements IArticleService{
         @Override
         public List<ArticleDto> findArticlesByName(String articleName) {
             List<ArticleDto> allArticles = new ArrayList<ArticleDto>();
-            allArticles = mapper.mapToListArticlesDto(articleDao.findAllByNameContaining(articleName));
+            allArticles = mapper.mapToListArticlesDto(articleDao.findAllByNameContaining(articleName, Article.class, "a.articleName"));
             return allArticles;
         }
        // trouver un article par son id
        @Override
        public ArticleDto findArticleById(Long id) {
            ArticleDto articleDtoId = new ArticleDto();
-           Optional<Article> articleDo = articleDao.findById(id);
+           Optional<Article> articleDo = articleDao.findById(id, Article.class, "a.articleId");
 
            if(articleDo.isPresent()){
                Article article = new Article();
@@ -51,27 +51,21 @@ public class ArticleServiceImpl implements IArticleService{
            throw new RuntimeException("that object does not exist");
        }
        
-        //rajouter un article
+        //rajouter ou modifier un article
         @Override
         public void addArticle(ArticleDto articleDto) {
             
             Article article = new Article();
             article = mapper.mapToArticle(articleDto);
-            articleDao.save(article);
+            articleDao.save(article, article.getArticleId());
            
         }
-         // modifier un article
-        
-         @Override
-         public void updateArticle(Long id, ArticleDto articleDto) {                      
-            this.addArticle(articleDto);
-         }
+       
 
-
-         // Permet de supprimer un article
+        // Permet de supprimer un article
         @Override
         public void deleteArticle(Long id) {
-          articleDao.deleteById(id); 
+          articleDao.deleteById(id, Article.class, "a.articleId"); 
     
         }
 
