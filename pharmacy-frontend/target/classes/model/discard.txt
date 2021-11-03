@@ -1,0 +1,1 @@
+Ce package doit contenir les classes Objet. (type Article.java)
