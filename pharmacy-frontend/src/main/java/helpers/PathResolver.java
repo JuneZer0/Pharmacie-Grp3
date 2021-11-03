@@ -1,4 +1,4 @@
-package main.java.helpers;
+package helpers;
 
 public class PathResolver {
 
