@@ -21,7 +21,7 @@ public class PathResolver {
     public static final String JSP_MENU ="/WEB-INF/jsp/header.jsp";
     public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
     public static final String JSP_HOME="";
-    public static final String JSP_PRODUCT="./java/servlet/articleServlet.java";
+    public static final String JSP_PRODUCT="/WEB-INF/jsp/article.jsp";
     public static final String JSP_FORM="";
 
     //METHOD NAMES
@@ -53,6 +53,4 @@ public class PathResolver {
     public static final String APP_PRODUCT = APP_BASE+SRV_PRODUCT_NAME;
 
 
-
-    
 }

@@ -1,29 +1,29 @@
 package servlet;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import helpers.CustomDispatcher;
-import helpers.PathResolver;
 
-public class FrontController  {
+public class FrontController extends HttpServlet {
     CustomDispatcher dispatcher = new CustomDispatcher();
     
-  /*
-   public void doGet(HttpServletRequest request, HttpServletResponse response){
+  
+   public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
 
     String pathToForward = request.getRequestURI();
+   
+    //SECURITY STUFF HERE
 
-    String identifiedCall=dispatcher.identifyCall(pathToForward);
-
-    switch (identifiedCall){
-        case PathResolver.APP_BASE :
-
-        case PathResolver.API_BASE :
-    }*/
-
-       
+    String target = dispatcher.callServlet(pathToForward);
+    RequestDispatcher forwarder = request.getRequestDispatcher(target);
+    forwarder.forward(request, response);
+           
    }
 
 
