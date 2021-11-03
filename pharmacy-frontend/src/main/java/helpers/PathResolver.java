@@ -2,7 +2,7 @@ package helpers;
 
 public class PathResolver {
 
-     //NAMES ====================================================================
+    //NAMES ====================================================================
     //APP URLS
     public static final String APP_BASE = "/app/";
    
