@@ -1,8 +1,5 @@
 package model;
 
-
-
-
 public class Article {
 
     private Long idArticle;
@@ -64,7 +61,7 @@ public class Article {
         this.articleQuantity = articleQuantity;
     }
 
-    public Boolean isIsArticleAvailable() {
+    public Boolean isArticleAvailable() {
         return this.isArticleAvailable;
     }
 
