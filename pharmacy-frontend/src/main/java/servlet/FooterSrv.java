@@ -1,5 +1,5 @@
 package servlet;
-
+   
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,10 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import helpers.PathResolver;
 
-@WebServlet("/header")
-public class HeaderSrv extends HttpServlet {
+@WebServlet("/footer")
+public class FooterSrv extends HttpServlet {
 
-    public HeaderSrv(){
+    public FooterSrv(){
         super();
     }
 
@@ -23,8 +23,10 @@ public class HeaderSrv extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
         System.out.println("servlet called");
-        RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_MENU);
+        RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FOOTER);
         rd.forward(req, resp);
     }
     
 }
+
+

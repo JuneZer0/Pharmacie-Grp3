@@ -7,10 +7,10 @@ import javax.servlet.http.HttpServletResponse;
 import helpers.CustomDispatcher;
 import helpers.PathResolver;
 
-public class FrontController extends HttpServlet {
+public class FrontController  {
     CustomDispatcher dispatcher = new CustomDispatcher();
     
-   @Override
+  /*
    public void doGet(HttpServletRequest request, HttpServletResponse response){
 
     String pathToForward = request.getRequestURI();
@@ -21,7 +21,7 @@ public class FrontController extends HttpServlet {
         case PathResolver.APP_BASE :
 
         case PathResolver.API_BASE :
-    }
+    }*/
 
        
    }
