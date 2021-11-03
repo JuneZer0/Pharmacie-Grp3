@@ -18,8 +18,8 @@ public class PathResolver {
 
 
     //JSP Paths
-    public static final String JSP_MENU ="./webapp/WEB-INF/header.jsp";
-    public static final String JSP_FOOTER ="./webapp/WEB-INF/footer.jsp";
+    public static final String JSP_MENU ="/WEB-INF/jsp/header.jsp";
+    public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
     public static final String JSP_HOME="";
     public static final String JSP_PRODUCT="./java/servlet/articleServlet.java";
     public static final String JSP_FORM="";

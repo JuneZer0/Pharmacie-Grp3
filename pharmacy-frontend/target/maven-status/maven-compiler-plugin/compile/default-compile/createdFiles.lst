@@ -1,3 +1,5 @@
 helpers\PathResolver.class
-model\Article.class
+servlet\HeaderSrv.class
 servlet\FrontController.class
+helpers\CustomDispatcher.class
+model\Article.class
