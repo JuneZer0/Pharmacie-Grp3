@@ -1,8 +1,5 @@
 package model;
 
-
-
-
 public class Article {
 
     private Long idArticle;

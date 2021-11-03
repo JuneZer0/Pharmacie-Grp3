@@ -18,10 +18,10 @@ public class PathResolver {
 
 
     //JSP Paths
-    public static final String JSP_MENU ="./webapp/WEB-INF/header.jsp";
-    public static final String JSP_FOOTER ="./webapp/WEB-INF/footer.jsp";
-    public static final String JSP_HOME="./webapp/WEB-INF/home.jsp";
-    public static final String JSP_PRODUCT="";
+    public static final String JSP_MENU ="/WEB-INF/jsp/header.jsp";
+    public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
+    public static final String JSP_HOME="";
+    public static final String JSP_PRODUCT="./java/servlet/articleServlet.java";
     public static final String JSP_FORM="";
 
     //METHOD NAMES
@@ -34,11 +34,11 @@ public class PathResolver {
     //CALLS =========================================================================
     
     //API REQUESTS CALLED FROM FRONT CONTROLLER
-    public static final String API_TARGET_CREATE = API_PORT+API_BASE;
-    public static final String API_TARGET_LIST = API_TARGET_CREATE;
-    public static final String API_TARGET_DELETE = API_TARGET_CREATE;
-    public static final String API_TARGET_BYNAME = API_TARGET_CREATE+"/byname";
-    public static final String API_TARGET_UPDATE = API_TARGET_CREATE;
+    public static final String API_TARGET_CREATE= API_PORT+API_BASE;
+    public static final String API_TARGET_LIST= API_TARGET_CREATE;
+    public static final String API_TARGET_DELETE= API_TARGET_CREATE;
+    public static final String API_TARGET_BYNAME= API_TARGET_CREATE+"/byname";
+    public static final String API_TARGET_UPDATE= API_TARGET_CREATE;
 
     //API REQUESTS CALL FROM SERVLET OR JSP
     public static final String API_CREATE = API_BASE+"/"+MTHD_CREATE;

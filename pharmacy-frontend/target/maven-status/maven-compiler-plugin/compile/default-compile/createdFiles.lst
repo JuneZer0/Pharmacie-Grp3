@@ -1,1 +1,5 @@
-main\java\helpers\PathResolver.class
+helpers\PathResolver.class
+servlet\HeaderSrv.class
+servlet\FrontController.class
+helpers\CustomDispatcher.class
+model\Article.class
