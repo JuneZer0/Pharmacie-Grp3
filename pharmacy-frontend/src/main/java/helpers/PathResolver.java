@@ -4,7 +4,6 @@ public class PathResolver {
 
     //APP URLS
     public static final String APP_BASE = "/app/";
-   
     //API URLS
     public static final String API_PORT = "http://localhost:8080";    
     public static final String API_BASE="/api/articles";
@@ -33,18 +32,29 @@ public class PathResolver {
 
 
     //SERVLET NAMES
-    public static final String SRV_HOME_NAME="";
-    public static final String SRV_FORM_NAME="";
-    public static final String SRV_PRODUCT_NAME=""; 
+    public static final String SRV_HOME_NAME="home";
+    public static final String SRV_FORM_NAME="form";
+    public static final String SRV_PRODUCT_NAME="product"; 
 
 
     //JSP Paths
-    public static final String JSP_MENU ="./webapp/WEB-INF/header.jsp";
-    public static final String JSP_FOOTER ="./webapp/WEB-INF/footer.jsp";
+    public static final String JSP_MENU="./webapp/WEB-INF/header.jsp";
+    public static final String JSP_FOOTER="./webapp/WEB-INF/footer.jsp";
     public static final String JSP_HOME="";
     public static final String JSP_PRODUCT="";
-    public static final String JSP_FORM="";
+    public static final String JSP_FORM= "";
 
+    //Call servlet
+    public static final String CALL_SRV_HOME= APP_BASE+SRV_HOME_NAME;
+    public static final String CALL_SRV_PRODUCT= APP_BASE+SRV_PRODUCT_NAME;
+    public static final String CALL_SRV_FORM= APP_BASE+SRV_FORM_NAME;
+
+
+
+
+
+
+ 
 
 
 
