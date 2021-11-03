@@ -44,7 +44,12 @@ public class FrontController extends HttpServlet {
 
         //FORWARD TO SERVLET
 
+<<<<<<< HEAD
     } else {
+=======
+       
+   
+>>>>>>> develop
 
         //FORWARD TO PRODUCT WITH AN OBJECT
         //FORWARD TO HOME
