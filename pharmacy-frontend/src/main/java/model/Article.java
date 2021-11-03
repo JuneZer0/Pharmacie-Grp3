@@ -61,7 +61,7 @@ public class Article {
         this.articleQuantity = articleQuantity;
     }
 
-    public Boolean isIsArticleAvailable() {
+    public Boolean isArticleAvailable() {
         return this.isArticleAvailable;
     }
 
