@@ -5,8 +5,6 @@ import java.util.List;
 import java.util.Optional;
 
 import com.grp3.pharmacybackend.persistance.dao.interfaces.IGenericDao;
-import com.grp3.pharmacybackend.persistance.entities.Article;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -87,28 +85,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T> {
    
 
     @Override
-<<<<<<< HEAD
-    public void save(T objDoToCreate) {
-       
-            try { 
-                startOperation();   
-                session.saveOrUpdate(objDoToCreate);
-                session.getTransaction().commit();
-            }
-            catch(Exception e){
-                System.out.println(e.getMessage());
-            }      
-            finally{
-                if (session!=null && session.isOpen()){
-                    closeOperation();
-                }
-            }
-        }
-
-
-
-    
-=======
     public void save(final T objDoToCreate, Long id) {
        try { 
            
@@ -126,7 +102,6 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T> {
           closeOperation();
        }
     }
->>>>>>> 72a3b4a5d5f99b527153b8613dc1ef5953e30b0f
 
     @Override
     public void deleteById(final Long idObjDo, final Class class1, final String queryField) {
