@@ -6,6 +6,9 @@
 <html lang="en">
 
     <body>
+        <header>
+            <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
+        </header>
         <div class="container">
 
             <h3>Détails de l'article</h3>
@@ -33,9 +36,9 @@
             </button>
         </div>
 
-        <footer>
+        <div id ="footer">
             <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>
-        </footer>
+        </div>
         
         
     </body>

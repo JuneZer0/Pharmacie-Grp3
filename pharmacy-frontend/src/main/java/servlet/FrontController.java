@@ -14,7 +14,7 @@ import org.jboss.resteasy.spi.HttpResponse;
 import helpers.CustomDispatcher;
 import helpers.PathResolver;
 
-@WebServlet(name="frontcontroller", urlPatterns = {"/api/*", PathResolver.APP_BASE+"*"})
+@WebServlet(name="frontcontroller", urlPatterns = {"/api/*", PathResolver.APP_BASE+"/*"})
 public class FrontController extends HttpServlet {
 
     CustomDispatcher customDispatcher = new CustomDispatcher();
