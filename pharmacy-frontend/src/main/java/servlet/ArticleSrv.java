@@ -12,8 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import helpers.PathResolver;
 
-@WebServlet("article")
-
+@WebServlet(PathResolver.SRV_PRODUCT_NAME)
 public class ArticleSrv extends HttpServlet {
 
     public ArticleSrv() {
@@ -24,10 +23,11 @@ public class ArticleSrv extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
         System.out.println("servlet called");
+
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_PRODUCT);
         rd.forward(req, resp);
     }
 
     @Override
-    public void doPost(HttpServletRequest request, HttpServletResponse response)
+    public void doPost(HttpServletRequest request, HttpServletResponse response){}
 }

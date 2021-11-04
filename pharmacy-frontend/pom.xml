@@ -10,7 +10,13 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
 </properties>
-  <dependencies>  
+  <dependencies>
+
+  <dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>jstl</artifactId>
+    <version>1.2</version>
+  </dependency>
 <dependency>
     <groupId>jakarta.platform</groupId>
     <artifactId>jakarta.jakartaee-api</artifactId>

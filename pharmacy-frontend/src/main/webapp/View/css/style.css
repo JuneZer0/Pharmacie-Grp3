@@ -99,3 +99,10 @@ li a:hover {
   .container {
     padding: 2px 16px;
   }
+.visible {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
