@@ -1,3 +1,7 @@
-#listAllArticles {
+.visible {
+    display: block;
+}
+
+.invisible {
     display: none;
 }
