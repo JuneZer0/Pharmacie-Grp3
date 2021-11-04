@@ -16,7 +16,6 @@ public class CustomDispatcher {
     public CustomDispatcher(){}
 
 
-
     /**
      * Identifies if the calls is destined to the app or the api 
      * @param urlToIdentify the request uri
