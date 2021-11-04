@@ -7,8 +7,8 @@ public class PathResolver {
     public static final String APP_BASE = "/app/";
    
     //API URLS
-    public static final String API_PORT = "http://localhost:8080";    
-    public static final String API_BASE="/api/articles";
+    public static final String API_PORT = "http://localhost:8080";
+    public static final String API_ARTICLE_BASE="/api/articles";
 
     
     //SERVLET NAMES
@@ -34,18 +34,18 @@ public class PathResolver {
     //CALLS =========================================================================
     
     //API REQUESTS CALLED FROM FRONT CONTROLLER
-    public static final String API_TARGET_CREATE= API_PORT+API_BASE;
+    public static final String API_TARGET_CREATE= API_PORT+API_ARTICLE_BASE;
     public static final String API_TARGET_LIST= API_TARGET_CREATE;
     public static final String API_TARGET_DELETE= API_TARGET_CREATE;
     public static final String API_TARGET_BYNAME= API_TARGET_CREATE+"/byname";
     public static final String API_TARGET_UPDATE= API_TARGET_CREATE;
 
     //API REQUESTS CALL FROM SERVLET OR JSP
-    public static final String API_CREATE = API_BASE+"/"+MTHD_CREATE;
-    public static final String API_GETALL = API_BASE+"/"+MTHD_LIST;
-    public static final String API_DELETE = API_BASE+"/"+MTHD_DELETE;
-    public static final String API_BYNAME = API_BASE+"/"+MTHD_BYNAME;
-    public static final String API_UPDATE = API_BASE+"/"+MTHD_UPDATE;
+    public static final String API_CREATE = API_ARTICLE_BASE+"/"+MTHD_CREATE;
+    public static final String API_GETALL = API_ARTICLE_BASE+"/"+MTHD_LIST;
+    public static final String API_DELETE = API_ARTICLE_BASE+"/"+MTHD_DELETE;
+    public static final String API_BYNAME = API_ARTICLE_BASE+"/"+MTHD_BYNAME;
+    public static final String API_UPDATE = API_ARTICLE_BASE+"/"+MTHD_UPDATE;
 
     //CALL ANOTHER SERVLET FROM SERVLET OR JSP
     public static final String APP_HOME = APP_BASE+SRV_HOME_NAME;
