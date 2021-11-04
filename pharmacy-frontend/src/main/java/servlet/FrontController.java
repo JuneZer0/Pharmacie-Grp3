@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -56,7 +55,7 @@ public class FrontController extends HttpServlet {
     //delete after test
     else if(target.equals("WEB-INF")){
     System.out.println("including TO PRODUCT JSP");
-    request.getRequestDispatcher(PathResolver.JSP_MENU).forward(request,response);}    
+    request.getRequestDispatcher(PathResolver.JSP_PRODUCT).forward(request,response);}    
 
  
     else{
