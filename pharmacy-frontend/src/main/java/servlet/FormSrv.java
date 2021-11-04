@@ -24,4 +24,16 @@ public class FormSrv  extends HttpServlet {
         rd.forward(req, resp);
     }
     
+            // Récupérer l'article dans le champs texte
+            String name = request.getParameter("");
+      
+            // Si l'article existe => update
+            if (article != null) {
+            
+            }
+            
+             // Sinon => Create
+             else {
+                request.setAttribute("","" );
+
 }
