@@ -21,7 +21,7 @@ _________________________________________________________ -->
                 <br>Caroline
                 <br>Virginie
                 <br>Arwa
-                <br>Maïa
+                <br>Maia
 
                 <br>
                 <strong>Simplon x Capgemini</strong>

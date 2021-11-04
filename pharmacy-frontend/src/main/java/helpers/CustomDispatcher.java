@@ -1,13 +1,14 @@
 package helpers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.jboss.resteasy.spi.HttpResponse;
 
 public class CustomDispatcher {
 
@@ -29,7 +30,7 @@ public class CustomDispatcher {
             System.out.println("ISOLATED STRING :"+parsedUrl[2]);          
             switch(parsedUrl[2]){
                 
-                case "api" : identifiedCall = PathResolver.API_BASE;
+                case "api" : identifiedCall = PathResolver.API_ARTICLE_BASE;
                              break;
 
                 case "app" : identifiedCall = PathResolver.APP_BASE;
@@ -69,39 +70,90 @@ public class CustomDispatcher {
 
 
     /**
-     * Convert the local url to an url for the api call
+     * Convert the local api url (/app/obj/method/params) to an url for the api call (http://localhost:port/obj/)
+     * Works only for article. If other tables are to be added, that method will have to be updated as well
+     * as pathresolver.
      * @param pathSentByServlet
-     * @return an url to the controller
+     * @return a map with the servlet and the 
+     * @throws Exception
      */
-    public String convertToRequest(final String pathSentByServlet) {
-        String apiRequest = PathResolver.API_PORT+PathResolver.API_BASE;
-        String urlParameters = getParameters(pathSentByServlet);
-        return apiRequest+"/"+urlParameters;
-    }
+    public Map<String,String> convertToRequest(final String pathSentByServlet) throws Exception {
+        System.out.println("Converting...");
 
-
-
-    private String getParameters(String pathSentByServlet) {
-        String[]urlPieces = pathSentByServlet.split("/");
-        String parameters ="";
-        if(urlPieces.length>3){
-            for(int i=4; i<urlPieces.length; i++)
-            {
-                parameters=parameters+urlPieces[i];
-            }
+        String[]parsedUrl = pathSentByServlet.split("/");  
+              
+        if(parsedUrl.length<3){
+            throw new Exception("You made an API call but specified no method");
         }
-        return parameters;
-        
+
+       //get method
+       String method = parsedUrl[4];
+       System.out.println("method :"+method);
+       HashMap<String, String> convertedRequest = new HashMap<>();
+
+       //according to the method, convert the request to appropriate map
+       switch(method){
+           case PathResolver.MTHD_CREATE :
+                convertedRequest.put("method", "POST");
+                convertedRequest.put("path", PathResolver.API_TARGET_CREATE);
+                break;
+           case PathResolver.MTHD_UPDATE :
+                convertedRequest.put("method", "PUT");
+                convertedRequest.put("path", PathResolver.API_TARGET_UPDATE);
+                break;
+           case PathResolver.MTHD_LIST : 
+                convertedRequest.put("method", "GET");
+                convertedRequest.put("path", PathResolver.API_TARGET_LIST);
+                break;
+           case PathResolver.MTHD_BYNAME :
+                if(parsedUrl.length<4){
+                    throw new Exception("You made a query for list by name but no name has been provided");
+                }   
+                convertedRequest.put("method", "GET");
+                convertedRequest.put("path", PathResolver.API_TARGET_BYNAME+"/"+parsedUrl[4]);
+                break;
+            case PathResolver.MTHD_DELETE :
+                if(parsedUrl.length<4){
+                    throw new Exception("You made a delete request but no id has been specified");
+                }
+                convertedRequest.put("method", "DELETE");
+                convertedRequest.put("path", PathResolver.API_TARGET_DELETE+"/"+parsedUrl[4]);
+                break;
+            //should never happen since method has already been checked.
+            default : throw new Exception("Malformed Request. No method specified.");  
+       }                   
+                System.out.println("Converted method :"+convertedRequest.get("method"));
+                System.out.println("Converted url :"+convertedRequest.get("path"));
+                return convertedRequest;
     }
+   
 
-
-//TODO: remove
-    public void manageAPI(String apiRequest, HttpServletRequest request, HttpServletResponse response) {
+    public void manageAPI(Map<String, String> apiRequest, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         ApiManager apiManager = new ApiManager();
-        apiManager.getArticles();
+        String method = apiRequest.get("method");
+        String path = apiRequest.get("path");
+        switch(method){
+            case "GET" :
+                String[] req = path.split("/");
+                if(req.length>3 && req[4].equals("byname")){
+                    apiManager.getArticlesByName(request, response);
+                    
+                } else {
+                    apiManager.getArticles(request, response);
+                }
+                break;
+            case "POST": 
+                    apiManager.addArticles(request,response);
+                    break;
+            
+            case "DELETE" :
+                    apiManager.deleteArticle(request, response);
+                    break;
+            }
         
     }
+
+
     
 }
-;

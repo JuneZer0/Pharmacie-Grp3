@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,31 +33,28 @@ public class FrontController extends HttpServlet {
     System.out.println("TARGET :"+target);
 
 
-    if(target.equals(PathResolver.API_BASE)){
+    if(target.equals(PathResolver.API_ARTICLE_BASE)){
+
         System.out.println("Entered if : target equals API_BASE");
-        String apiRequest = customDispatcher.convertToRequest(pathSentByServlet);
-
-        System.out.println("API REQUEST CONVERTED TO : "+apiRequest);
+        Map<String, String> apiRequest = new HashMap<>();
+        
+        try {
+            apiRequest = customDispatcher.convertToRequest(pathSentByServlet);
+            System.out.println("API REQUEST CONVERTED TO : "+apiRequest.get("path")+"METHOD: "+apiRequest.get("method"));
             
-        // CALL THE API
-        System.out.println("Calling api manager");
-        customDispatcher.manageAPI(apiRequest, request, response);
+            // CALL THE API
+            System.out.println("Calling api manager");
+            customDispatcher.manageAPI(apiRequest, request, response);                    
 
-
-        // IF METHOD WAS GET ALL OR GET ALL BY NAME FORWARD TO SERVLET WITH A LIST OBJECT
-        // IF METHOD WAS DELETE AND EMITTER SERVLET WAS THE LIST, SEND RESPONSE OK
-        // IF METHOD WAS DELETE AND EMITTER SERVLET WAS PRODUCT,
-        // OR IF METHOD WAS UPDATE OR CREATE => FORWARD TO HOME IF SUCCESS
-        // 
+        } catch (Exception e) {            
+            e.printStackTrace();
+        }
           
     }
-
     
-
     //delete after test
     else if(target.equals("WEB-INF")){
-    System.out.println("including TO PRODUCT JSP");
-    request.getRequestDispatcher(PathResolver.JSP_MENU).forward(request,response);}    
+    request.getRequestDispatcher(pathSentByServlet).forward(request,response);}    
 
  
     else{
