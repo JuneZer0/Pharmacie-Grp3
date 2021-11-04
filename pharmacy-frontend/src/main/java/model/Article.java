@@ -2,6 +2,7 @@ package model;
 
 public class Article {
 
+   
     private Long idArticle;
     private Long articleBarcode;
     private String articleName;
@@ -71,6 +72,17 @@ public class Article {
 
     public void setIsArticleAvailable(Boolean isArticleAvailable) {
         this.isArticleAvailable = isArticleAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " idArticle='" + getIdArticle() + "'" +
+            ", articleBarcode='" + getArticleBarcode() + "'" +
+            ", articleName='" + getArticleName() + "'" +
+            ", articlePrice='" + getArticlePrice() + "'" +
+            ", articleQuantity='" + getArticleQuantity() + "'"  +
+            "}";
     }
 
 }

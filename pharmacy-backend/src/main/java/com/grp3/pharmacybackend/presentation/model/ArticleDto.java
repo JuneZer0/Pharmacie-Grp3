@@ -6,7 +6,7 @@ public class ArticleDto {
     private String articleName;
     private Double articlePrice;
     private Integer articleQuantity;
-    private Boolean isArticleAvailable;
+   
 
 
     public ArticleDto() {

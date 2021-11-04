@@ -12,7 +12,7 @@ public class PathResolver {
 
     
     //SERVLET NAMES
-    public static final String SRV_HOME_NAME="";
+    public static final String SRV_HOME_NAME="/home";
     public static final String SRV_FORM_NAME="";
     public static final String SRV_PRODUCT_NAME="/article"; 
 
@@ -20,7 +20,7 @@ public class PathResolver {
     //JSP Paths
     public static final String JSP_MENU ="";
     public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
-    public static final String JSP_HOME="";
+    public static final String JSP_HOME="/WEB-INF/jsp/home.jsp";
     public static final String JSP_PRODUCT="/WEB-INF/jsp/article.jsp";
     public static final String JSP_FORM="";
 
