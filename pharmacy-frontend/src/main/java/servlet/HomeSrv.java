@@ -14,13 +14,13 @@ import javax.servlet.http.HttpServletResponse;
 import helpers.PathResolver;
 import model.Article;
 
-@WebServlet()
+@WebServlet(PathResolver.APP_HOME)
 public class HomeSrv extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         List<Article> articles;
         // Récuperer le "name en paramètre"
-        String name = (String) request.getParameter("name");
+        String name = (String) request.getAttribute("name");
         // Récuperer la "list" en attribut
         List<Article> list = (List<Article>) request.getAttribute("list");
         // Tester si un name est présent
