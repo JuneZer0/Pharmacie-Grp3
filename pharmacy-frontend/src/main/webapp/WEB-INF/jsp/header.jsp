@@ -22,12 +22,10 @@
     
                     <li><a href="" style="float:left" class="logo">PHAR<small>MACY</small> </a>
                     </li>
+                    
+                    <li><a href="" style="float:right">Accueil</a></li>
+                    <li><a href="" style="float:right" class="active">Ajouter un médicament ? </a></li>
                     <li><a href="" style="float:right">Se connecter</a></li>
-                    <li><a href="" style="float:right">Contact</a></li>
-                    <li><a href="#" style="float:right" class="active">Ajouter un médicament ? </a></li>
-                    <li><a href="" style="float:right">Contact</a></li>
-    
-    
                 </lu>
     
             </nav>
@@ -37,3 +35,5 @@
 
 </body>
 </html>
+
+<%@include file="footer.jsp"%>

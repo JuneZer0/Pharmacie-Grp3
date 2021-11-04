@@ -1,12 +1,7 @@
-<<<<<<< HEAD
-c:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\model\Article.java
-c:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\helpers\PathResolver.java
-=======
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\model\Article.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\HeaderSrv.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\FrontController.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\ArticleSrv.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\helpers\CustomDispatcher.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\helpers\PathResolver.java
-C:\Users\Maïa\Desktop\EXO_PHARMACY\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\FooterSrv.java
->>>>>>> 8b522ff4c88781340ad03e9d35f5864216f969a8
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\helpers\CustomDispatcher.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\ArticleSrv.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\model\Article.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\helpers\PathResolver.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\FooterSrv.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\FrontController.java
+C:\Users\Apprenant\Desktop\TPjee\Pharmacie-Grp3\pharmacy-frontend\src\main\java\servlet\HeaderSrv.java
