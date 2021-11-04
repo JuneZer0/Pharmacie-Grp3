@@ -59,11 +59,14 @@ public class ApiManager {
       String responseValue = apiResponse.readEntity(String.class);
       ObjectMapper mapper = new ObjectMapper();
       resultList = mapper.readValue(responseValue, new TypeReference<List<Article>>(){});
-      System.out.println(resultList);
+      for(Article a: resultList){
+        System.out.println("article : "+a.getArticleName());
       }
+    }
       //Sends to the next route.
       RequestDispatcher router =  request.getRequestDispatcher(PathResolver.APP_HOME);     
       request.setAttribute("list", resultList);
+      apiResponse.close();
       router.forward(request, response);
     }
 

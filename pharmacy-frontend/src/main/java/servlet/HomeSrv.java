@@ -22,7 +22,9 @@ public class HomeSrv extends HttpServlet {
         // Récuperer le "name en paramètre"
         String name = (String) request.getAttribute("name");
         // Récuperer la "list" en attribut
-        List<Article> list = (List<Article>) request.getAttribute("list");
+        List<Article> list = new ArrayList<Article>();
+        if(request.getAttribute("list")!=null){
+                list=(List<Article>) request.getAttribute("list");}
         // Tester si un name est présent
         if (name != null) {
                 // Un getByName() a été demandé
@@ -47,7 +49,7 @@ public class HomeSrv extends HttpServlet {
         }
         // Envoyer la liste à la jsp
         request.setAttribute("articles", articles);
-        this.getServletContext().getRequestDispatcher(PathResolver.APP_HOME).forward(request, response);
+        this.getServletContext().getRequestDispatcher(PathResolver.JSP_HOME).forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

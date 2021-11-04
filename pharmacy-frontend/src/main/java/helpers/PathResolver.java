@@ -4,7 +4,7 @@ public class PathResolver {
 
     //NAMES ====================================================================
     //APP URLS
-    public static final String APP_BASE = "/app/";
+    public static final String APP_BASE = "/app";
    
     //API URLS
     public static final String API_PORT = "http://localhost:8080";
