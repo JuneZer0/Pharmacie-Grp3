@@ -18,11 +18,11 @@ public class PathResolver {
 
 
     //JSP Paths
-    public static final String JSP_MENU ="";
+    public static final String JSP_MENU ="/WEB-INF/jsp/header.jsp";
     public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
     public static final String JSP_HOME="/WEB-INF/jsp/home.jsp";
     public static final String JSP_PRODUCT="/WEB-INF/jsp/article.jsp";
-    public static final String JSP_FORM="";
+    public static final String JSP_FORM="/WEB-INF/jsp/addArticle.jsp";
 
     //METHOD NAMES
     public static final String MTHD_CREATE = "create";
