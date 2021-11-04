@@ -44,7 +44,6 @@ public class CustomDispatcher {
     }
 
 
-
     /**
      * Forward request to corresponding servlet
      * @throws IOException
@@ -56,6 +55,10 @@ public class CustomDispatcher {
                                 throws ServletException, IOException{
      String[]parsedUrl= url.split("/");
      String servletname = parsedUrl[3];
+     System.out.println("Servlet name :"+servletname);
+     if(servletname == "home" && req.getAttribute("name")==null){
+         req.setAttribute("name", "");
+     }
 
       RequestDispatcher dsp = req.getRequestDispatcher("/"+servletname);
       dsp.forward(req, rsp);
