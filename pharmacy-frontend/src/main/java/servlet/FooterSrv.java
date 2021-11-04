@@ -22,7 +22,7 @@ public class FooterSrv extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
-        System.out.println("servlet called");
+        System.out.println(" footer servlet called");
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FOOTER);
         rd.forward(req, resp);
     }

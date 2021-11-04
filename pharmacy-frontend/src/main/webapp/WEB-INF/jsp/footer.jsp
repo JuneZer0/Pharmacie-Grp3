@@ -1,9 +1,15 @@
        <!-- *** FOOTER ***
 _________________________________________________________ -->
 
-<footer id="footer">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../View/css/style.css">
+    
+</head>
+
+<footer class="footer">
     <div class="container">
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-6 col-sm-6">
             
 
             <p>
@@ -12,7 +18,7 @@ _________________________________________________________ -->
 
            
 
-        <div class="col-md-3 col-sm-6">
+        <div class="col-md-6 col-sm-6">
 
             <h4>Builders</h4>
 
@@ -21,7 +27,7 @@ _________________________________________________________ -->
                 <br>Caroline
                 <br>Virginie
                 <br>Arwa
-                <br>Maïa
+                <br>Maia
 
                 <br>
                 <strong>Simplon x Capgemini</strong>

@@ -1,10 +1,8 @@
 package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
-
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
-
 
 
 

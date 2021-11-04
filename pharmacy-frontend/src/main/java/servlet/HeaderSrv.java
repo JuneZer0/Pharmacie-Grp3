@@ -23,7 +23,7 @@ public class HeaderSrv extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
         System.out.println("servlet called");
-        RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_MENU);
+        RequestDispatcher rd = sc.getRequestDispatcher("/"+PathResolver.JSP_MENU);
         rd.forward(req, resp);
     }
     

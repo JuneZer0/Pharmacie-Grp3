@@ -2,12 +2,13 @@ package model;
 
 public class Article {
 
+   
     private Long idArticle;
     private Long articleBarcode;
     private String articleName;
     private Double articlePrice;
     private Integer articleQuantity;
-    private Boolean isArticleAvailable;
+    private Boolean articleAvailable;
 
     public Article() {
     }
@@ -18,7 +19,7 @@ public class Article {
         this.articleName = articleName;
         this.articlePrice = articlePrice;
         this.articleQuantity = articleQuantity;
-        this.isArticleAvailable = isArticleAvailable;
+        this.articleAvailable = isArticleAvailable;
     }
 
     public Long getIdArticle() {
@@ -62,15 +63,26 @@ public class Article {
     }
 
     public Boolean isArticleAvailable() {
-        return this.isArticleAvailable;
+        return this.articleAvailable;
     }
 
     public Boolean getIsArticleAvailable() {
-        return this.isArticleAvailable;
+        return this.articleAvailable;
     }
 
     public void setIsArticleAvailable(Boolean isArticleAvailable) {
-        this.isArticleAvailable = isArticleAvailable;
+        this.articleAvailable = isArticleAvailable;
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+            " idArticle='" + getIdArticle() + "'" +
+            ", articleBarcode='" + getArticleBarcode() + "'" +
+            ", articleName='" + getArticleName() + "'" +
+            ", articlePrice='" + getArticlePrice() + "'" +
+            ", articleQuantity='" + getArticleQuantity() + "'"  +
+            "}";
     }
 
 }
