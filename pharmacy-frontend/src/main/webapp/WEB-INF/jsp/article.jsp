@@ -33,6 +33,9 @@
             </button>
         </div>
 
+        <footer>
+            <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>
+        </footer>
         
         
     </body>

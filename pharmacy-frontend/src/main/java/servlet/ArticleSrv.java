@@ -16,7 +16,9 @@ import model.Article;
 
 @WebServlet(PathResolver.SRV_PRODUCT_NAME)
 public class ArticleSrv extends HttpServlet {
+   
     private Article art = new Article();
+
     public ArticleSrv() {
         super();
     }
@@ -25,11 +27,13 @@ public class ArticleSrv extends HttpServlet {
     public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
         System.out.println("article servlet called");
+        
             art.setArticleName("doliprane");
             art.setArticleBarcode((long) 1543);
             art.setArticlePrice(2.5);
             art.setArticleQuantity(23);
         System.out.println("article passé");
+        
         req.setAttribute("art", art);
 
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_PRODUCT);

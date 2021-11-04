@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 * {
     box-sizing: border-box;
 }
@@ -85,9 +85,7 @@ li a:hover {
 
 
 
-=======
-/* css article.jsp */
->>>>>>> feat_maia
+
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
@@ -109,4 +107,13 @@ li a:hover {
 
 .invisible {
     display: none;
+}
+
+/* Footer CSS */
+footer {
+  display: flex;
+  justify-content: center;
+  padding: 5px;
+  background-color: #45a1ff;
+  color: #fff;
 }
