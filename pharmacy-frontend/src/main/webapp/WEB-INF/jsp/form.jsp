@@ -1,11 +1,8 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@include file="header.jsp"%>
-<!DOCTYPE html>
-<html lang="fr">
 
-<body>
+
 	<header>
 		<jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
 	</header>
@@ -69,8 +66,6 @@
 </form>
 
 <%@include file="footer.jsp"%>
-</body>
-</html>
 
 
 
