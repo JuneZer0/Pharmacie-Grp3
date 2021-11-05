@@ -35,7 +35,7 @@ public class HomeSrv extends HttpServlet {
                 // Tester si un name est présent
                 if (name != null) {                        
                         // Tester si la liste est vide
-                        if (articles.size() <= 0) {                                
+                        if (articles.size() == 0) {                                
                                 //pas de resultat
                                 PrintWriter out = response.getWriter();
                                 out.println("<p class='red'>Aucun résultat pour le nom : " + name +".</p>");
@@ -50,9 +50,18 @@ public class HomeSrv extends HttpServlet {
         @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                 System.out.println("POST METHOD");
-                String name = request.getParameter("button");
-                String providedName = request.getParameter("providedname");
-                getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
+                 // Récupérer le nom écrit dans le champs texte
+                 String name = request.getParameter("searchArticles");
+                 if (name != null) {
+                         // Placer le nom en attribut pour que la jsp le garde
+                         request.setAttribute("name", name);
+                         // Faire la requête getByName(name) à envoyer au back
+                                 this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
+                 } else {
+                         // Faire la requête getAll()) à envoyer au back
+                                 this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
+                         // Envoyer la liste à la jsp
+                 }
                
                         
 	}

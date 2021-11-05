@@ -78,7 +78,7 @@ public class ApiManager {
         //Create the list to send as a result
         List<Article>resultList = new ArrayList<>();  
         //Call the backend
-        ResteasyWebTarget target = apiClient.target(PathResolver.API_TARGET_BYNAME+"/"+param);
+        ResteasyWebTarget target = apiClient.target(PathResolver.API_TARGET_BYNAME+"/lol");
         Response apiResponse = target.request().get();
         if(apiResponse.getStatus() == 441){
           System.out.println("auth required");

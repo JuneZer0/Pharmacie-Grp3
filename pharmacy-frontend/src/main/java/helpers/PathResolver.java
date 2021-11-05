@@ -29,7 +29,7 @@ public class PathResolver {
     public static final String MTHD_CREATE = "create";
     public static final String MTHD_DELETE = "delete";
     public static final String MTHD_LIST = "list";
-    public static final String MTHD_BYNAME = "byName";
+    public static final String MTHD_BYNAME = "byname";
     public static final String MTHD_UPDATE  = "update";
 
     //CALLS =========================================================================
