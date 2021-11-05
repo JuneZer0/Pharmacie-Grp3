@@ -22,6 +22,7 @@ public class HomeSrv extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                 
                 System.out.println("--- Home called ---");
+                System.out.println("--- PathResolver.API_GETALL = " + PathResolver.API_GETALL);
                 System.out.println(request.getRequestURL());
                 HttpSession session = request.getSession(false);      
                 // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste vide                        
