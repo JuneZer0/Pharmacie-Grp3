@@ -81,6 +81,10 @@ li a:hover {
 }
 
 /* Home.jsp CSS */
+.justPicture {
+  padding: 8em;
+}
+
 .justPicture figure {
   width: fit-content;
   margin-left: auto;
@@ -89,6 +93,32 @@ li a:hover {
 
 .justPicture figure img {
   width: 100%;
+}
+
+form button a {
+  color:white;
+}
+
+form button a:hover {
+  text-decoration-line: none;
+  color:white;
+}
+
+section {
+  padding: 1em;
+}
+
+section a {
+  color:white;
+}
+
+section a:hover {
+  text-decoration-line: none;
+  color:white;
+}
+
+article {
+  padding: 1em;
 }
 
 /* Footer CSS */
