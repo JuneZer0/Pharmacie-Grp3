@@ -27,7 +27,9 @@
         <div class="btn">
              <!-- Edit button -->
              <button type="button" class="btn btn-primary">
-                <a href="${ API_UPDATE }">Modifier</a>
+                
+                 <a href= "http://localhost:8080/pharmacy-frontend-1.0/app/home" >Modifier</a> 
+                
             </button>
                 
             <!-- Delete button -->
