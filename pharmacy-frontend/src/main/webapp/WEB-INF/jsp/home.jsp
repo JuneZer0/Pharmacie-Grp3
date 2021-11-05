@@ -14,6 +14,14 @@
     <button type="submit" class="btn btn-secondary btn-lg">Rechercher</button>
 </form>
 
+<c:if test="${ requestScope.articles.size() == 0 }">
+    <section class="justPicture">
+        <figure>
+            <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/008-online-pharmacy.png" alt="Pharmacy">
+        </figure>
+    </section>
+</c:if>
+
 <!-- Solution différente du display none -->
 <c:if test="${ requestScope.articles.size() > 0 }">
     <div id="listArticles">
@@ -26,11 +34,11 @@
                                      
                     <c:choose>
                         <c:when test="${art.getArticleQuantity() > 0}">
-                            <img src="http://localhost:8081/pharmacy-frontend-1.0/view/img/001-available-64.png" alt="Available">
+                            <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/001-available-64.png" alt="Available">
                             <span>En stock</span>
                         </c:when>
                         <c:when test="${art.getArticleQuantity() == 0}">
-                            <img src="http://localhost:8081/pharmacy-frontend-1.0/view/img/002-out-of-stock-64.png" alt="Not available">
+                            <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/002-out-of-stock-64.png" alt="Not available">
                             <span>Indisponible</span>
                         </c:when>
                         <c:otherwise>
