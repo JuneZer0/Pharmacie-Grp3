@@ -5,6 +5,7 @@ public class PathResolver {
     //NAMES ====================================================================
     //APP URLS
     public static final String APP_BASE = "/app";
+    public static final String APP_CONTEXT = "/pharmacy-frontend-1.0";
    
     //API URLS
     public static final String API_PORT = "http://localhost:8080";
@@ -18,11 +19,11 @@ public class PathResolver {
 
 
     //JSP Paths
-    public static final String JSP_MENU ="";
+    public static final String JSP_MENU ="/WEB-INF/jsp/header.jsp";
     public static final String JSP_FOOTER ="/WEB-INF/jsp/footer.jsp";
     public static final String JSP_HOME="/WEB-INF/jsp/home.jsp";
     public static final String JSP_PRODUCT="/WEB-INF/jsp/article.jsp";
-    public static final String JSP_FORM="";
+    public static final String JSP_FORM="/WEB-INF/jsp/form.jsp";
 
     //METHOD NAMES
     public static final String MTHD_CREATE = "create";

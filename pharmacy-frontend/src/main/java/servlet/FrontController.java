@@ -50,28 +50,18 @@ public class FrontController extends HttpServlet {
             e.printStackTrace();
         }
           
-    }
-    
-    //delete after test
-    else if(target.equals("WEB-INF")){
-    request.getRequestDispatcher(pathSentByServlet).forward(request,response);}    
+    } 
 
- 
+    else if(target.equals("WEB-INF")){
+        System.out.println("calling jsp");
+        customDispatcher.callJsp(pathSentByServlet,request,response);
+    }
     else{
     System.out.println("FORWARDING TO SERVLET");
     customDispatcher.callServlet(pathSentByServlet, request, response);
     }
 
-
-        //FORWARD TO PRODUCT WITH AN OBJECT
-
-        //FORWARD TO HOME
-
-
-        //FORWARD TO FORM WITHOUT OBJECT
-
-        //FORWARD TO FORM WITH OBJECT*/
-    }
+}
             
     
   
