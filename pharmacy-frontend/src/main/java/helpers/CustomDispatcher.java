@@ -8,6 +8,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.crypto.dsig.keyinfo.RetrievalMethod;
 
 
 public class CustomDispatcher {
@@ -66,8 +67,16 @@ public class CustomDispatcher {
 
 
     
-    public String callJsp(final String url){
-        return "";
+    public void callJsp(final String url, final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException{
+        String[] target = url.split("/");
+        String goTO ="";
+        for(int i = 1; i<target.length; i++){
+         goTO = goTO+target[i];
+        }
+        RequestDispatcher dsp = request.getRequestDispatcher(goTO);
+        dsp.forward(request,response);
+
+
     }
 
 
