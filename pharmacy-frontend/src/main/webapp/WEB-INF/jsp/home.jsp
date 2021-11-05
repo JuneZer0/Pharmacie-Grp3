@@ -5,16 +5,16 @@
 <jsp:include page="header.jsp"/>
 
 <!-- Boutons qui feront apparaître les différentes listes -->
-<!-- <form action="#" method="post">
+ <form method="post">
     Pour la liste de tous les articles
-    <button type="submit" class="btn btn-primary btn-lg">Obtenir la liste des éléments</button>
+    <button type="submit" class="btn btn-primary btn-lg" name="searchArticles" value="all">Obtenir la liste des éléments</button>
     Pour la liste de tous des articles par nom
     <label for="searchArticles">Trouver des articles par nom</label>
     <input type="search" id="searchArticles" name="searchArticles" aria-label="Search articles">
-    <button type="submit" class="btn btn-secondary btn-lg">Rechercher</button>
-</form> -->
+    <button type="submit" class="btn btn-secondary btn-lg" name="searchArticles">Rechercher</button>
+</form>
 
-<!-- Test -->
+<!-- Test 
 <form>
     <button type="button" class="btn btn-primary btn-lg">
         <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/list">Obtenir la liste des éléments</a>
@@ -24,7 +24,7 @@
     <button type="button" class="btn btn-secondary btn-lg">
         <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/byname/biafine">Trouver des articles par nom</a>
     </button>
-</form>
+</form>-->
 
 <c:if test="${ requestScope.articles.size() == 0 }">
     <section class="justPicture">
@@ -58,28 +58,35 @@
                     </c:choose>
 
                     <!-- Details button -->
-                    <button type="button" class="btn btn-success">
+                    <button type="submit"  class="btn btn-success" name="article" value="${art}">
                         <!-- Lien vers l'URL avec l'id -->
                         <!-- De base -->
                         <!-- <a href="${ PathResolver.SRV_PRODUCT_NAME }/${ art.getIdArticle() }">Détails</a> -->
                         <!-- Test -->
                         <!-- <a href="${ PathResolver.APP_CONTEXT }${ PathResolver.APP_PRODUCT }/${ art.getIdArticle() }">Détails</a> -->
-                        <a href="http://localhost:8081/pharmacy-frontend-1.0/app/article">Détails</a>
+                        <!-- <a href="http://localhost:8081/pharmacy-frontend-1.0/app/article">-->
+                            Détails
+                        <!--</a>-->
                     </button>
 
                     <!-- Edit button -->
-                    <button type="button" class="btn btn-primary">
+                    <button type="submit" class="btn btn-primary" name="searchArticles" value="edit">
                         <!-- Lien vers l'URL avec l'id -->
                         <!-- De base -->
                         <!-- <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a> -->
                         <!-- Test -->
-                        <a href="http://localhost:8081/pharmacy-frontend-1.0/app/form/${ art.getIdArticle() }">Modifier</a>
+                        <!--<a href="http://localhost:8081/pharmacy-frontend-1.0/app/form/${ art.getIdArticle() }">-->
+                            Modifier
+                        <!--</a>-->
                     </button>
                     
                     <!-- Delete button -->
-                    <button type="button" class="btn btn-danger">
+                    <button type="submit" class="btn btn-danger" name="searchArticles" value ="delete">
                         <!-- Lien vers l'URL avec l'id -->
-                        <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/delete/${ art.getIdArticle() }">Supprimer</a>
+                        <!--<a href=
+                        "http://localhost:8081/pharmacy-frontend-1.0/api/articles/delete/${ art.getIdArticle() }">-->
+                        Supprimer
+                    <!--</a>-->
                     </button>
                 </article>
             </c:forEach>
