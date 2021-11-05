@@ -1,5 +1,6 @@
 package helpers;
 
+import helpers.PathResolver;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,6 @@ public class CustomDispatcher {
 
 
     public CustomDispatcher(){}
-
 
 
     /**
@@ -67,8 +67,16 @@ public class CustomDispatcher {
 
 
     
-    public String callJsp(final String url){
-        return "";
+    public void callJsp(final String url, final HttpServletRequest request, final HttpServletResponse response) throws ServletException, IOException{
+        String[] target = url.split("/");
+        String goTO ="";
+        for(int i = 1; i<target.length; i++){
+         goTO = goTO+target[i];
+        }
+        RequestDispatcher dsp = request.getRequestDispatcher(goTO);
+        dsp.forward(request,response);
+
+
     }
 
 

@@ -23,10 +23,7 @@
                 <article id="article-${art.getIdArticle()}">
                     <!-- <a href="${pageContext.request.contextPath}/article?id</a> -->
                     <p class="name">Nom : ${art.getArticleName()}</p>
-                    <p class="barcode">Code barre : ${art.getArticleBarcode()}</p>
-                    <p class="price">Prix : ${art.getArticlePrice()} €</p>
-                    <p class="quantity">Quantité : ${art.getArticleQuantity()}</p>
-                    
+                                     
                     <c:choose>
                         <c:when test="${art.getArticleQuantity() > 0}">
                             <img src="../../View/img/001-available-64.png" alt="Available">

@@ -19,16 +19,11 @@
 <body>
 
         <div>
-            <nav>
-    
-                <ul>
-    
-                    <li><a href="home" style="float:left" class="logo">PHAR<small>MACY</small> </a>
-                    </li>
-                    
-                    <li><a href="${PathResolver.APP_HOME}" style="float:right">Accueil</a></li>
-                    <li><a href="${PathResolver.APP_FORM}" style="float:right" class="active">Ajouter un médicament ? </a></li>
-                    <li><a href="" style="float:right">Se connecter</a></li>
+            <nav class= "navbar">
+                <a href="${PathResolver.APP_HOME}" class="navbar-brand">PHARMACY</a>                      
+                <ul class="nav">                                            
+                    <li class="nav-item active"><a class="nav-link" href="${PathResolver.APP_CONTEXT}${PathResolver.APP_HOME}" >Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="${PathResolver.APP_CONTEXT}$PathResolver.APP_FORM}">Ajouter un m&eacute;dicament ? </a></li>
                 </ul>
     
             </nav>
