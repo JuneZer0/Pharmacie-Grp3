@@ -1,10 +1,6 @@
 package com.grp3.pharmacybackend.business.Helpers;
 import java.util.ArrayList;
 import java.util.List;
-<<<<<<< HEAD
-=======
-
->>>>>>> 72a3b4a5d5f99b527153b8613dc1ef5953e30b0f
 import com.grp3.pharmacybackend.persistance.entities.Article;
 import com.grp3.pharmacybackend.presentation.model.ArticleDto;
 

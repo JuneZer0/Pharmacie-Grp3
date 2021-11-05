@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import helpers.PathResolver;
 import model.Article;
@@ -17,54 +18,53 @@ import model.Article;
 @WebServlet("/home")
 public class HomeSrv extends HttpServlet {
     
+        @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                
                 System.out.println("--- Home called ---");
-                List<Article> articles;
-                // Récuperer le "name en paramètre"
+                System.out.println(request.getRequestURL());
+                HttpSession session = request.getSession(false);      
+                // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste vide                        
+                List<Article> articles = new ArrayList<>();
+                if(session!=null && session.getAttribute("list")!=null){
+                        articles = (List<Article>) request.getSession().getAttribute("list");
+                }
+                
+                // Récuperer le "name en paramètre" s'il existe             
                 String name = (String) request.getAttribute("name");
-                // Récuperer la "list" en attribut
-                        // List<Article> list = (List<Article>) request.getAttribute("list");
-                List<Article> list = new ArrayList<>();
+                
                 // Tester si un name est présent
-                if (name != null) {
-                        // Un getByName() a été demandé
-                        request.setAttribute("name", name);
+                if (name != null) {                        
                         // Tester si la liste est vide
-                        if (list.size() > 0) {
-                                // La liste contient au moins un résultat
-                                articles = list;
-                        } else {
-                                // Pas de résultat
-                                articles = new ArrayList<>();
-                                // Afficher un message
+                        if (articles.size() == 0) {                                
+                                //pas de resultat
                                 PrintWriter out = response.getWriter();
                                 out.println("<p class='red'>Aucun résultat pour le nom : " + name +".</p>");
                         }
-                } else if (list.size() > 0) {
-                        // Un getAll() a été demandé
-                        articles = list;
-                } else {
-                        // Pas de getByName(), ni de getAll()
-                        articles = new ArrayList<>();
                 }
-                // Envoyer la liste à la jsp
-                request.setAttribute("articles", articles);
-                this.getServletContext().getRequestDispatcher(PathResolver.JSP_HOME).forward(request, response);
+
+                // Envoyer la liste à la jsp et appeler la jsp
+                request.setAttribute("articles", articles);            
+                getServletContext().getRequestDispatcher(PathResolver.JSP_HOME).forward(request, response);
 	}
 
+        @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                // Récupérer le nom écrit dans le champs texte
-                String name = request.getParameter("searchArticles");
-                if (name != null) {
-                        // Placer le nom en attribut pour que la jsp le garde
-                        request.setAttribute("name", name);
-                        // Faire la requête getByName(name) à envoyer au back
-                                this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
-                } else {
-                        // Faire la requête getAll()) à envoyer au back
-                                this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
-                        // Envoyer la liste à la jsp
-                }
+                System.out.println("POST METHOD");
+                 // Récupérer le nom écrit dans le champs texte
+                 String name = request.getParameter("searchArticles");
+                 if (name != null) {
+                         // Placer le nom en attribut pour que la jsp le garde
+                         request.setAttribute("name", name);
+                         // Faire la requête getByName(name) à envoyer au back
+                                 this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
+                 } else {
+                         // Faire la requête getAll()) à envoyer au back
+                                 this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
+                         // Envoyer la liste à la jsp
+                 }
+               
+                        
 	}
 
 }

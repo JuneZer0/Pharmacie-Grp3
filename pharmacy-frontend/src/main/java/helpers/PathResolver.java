@@ -5,6 +5,7 @@ public class PathResolver {
     //NAMES ====================================================================
     //APP URLS
     public static final String APP_BASE = "/app";
+    public static final String APP_CONTEXT = "/pharmacy-frontend-1.0";
    
     //API URLS
     public static final String API_PORT = "http://localhost:8080";
@@ -28,7 +29,7 @@ public class PathResolver {
     public static final String MTHD_CREATE = "create";
     public static final String MTHD_DELETE = "delete";
     public static final String MTHD_LIST = "list";
-    public static final String MTHD_BYNAME = "byName";
+    public static final String MTHD_BYNAME = "byname";
     public static final String MTHD_UPDATE  = "update";
 
     //CALLS =========================================================================
