@@ -1,3 +1,6 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -9,24 +12,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pharmacy</title>
     
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"> 
-    <link rel="stylesheet" href=".\webapp\View\css\style.css">
-    <title>Document</title>
-</head>
-<body>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://localhost:8081/pharmacy-frontend-1.0/View/css/style.css">
    
 
+</head>
+<body>
+
         <div>
-            <nav>
-    
-                <ul>
-    
-                    <li><a href="home" style="float:left" class="logo">PHAR<small>MACY</small> </a>
-                    </li>
-                    
-                    <li><a href="${PathResolver.APP_HOME}" style="float:right">Accueil</a></li>
-                    <li><a href="${PathResolver.APP_FORM}" style="float:right" class="active">Ajouter un médicament ? </a></li>
-                    <li><a href="" style="float:right">Se connecter</a></li>
+            <nav class= "navbar">
+                <a href="http://localhost:8081/pharmacy-frontend-1.0/app/home" class="navbar-brand">PHARMACY</a>                      
+                <ul class="nav">                                            
+                    <li class="nav-item active"><a class="nav-link" href="http://localhost:8081/pharmacy-frontend-1.0/app/home" >Accueil</a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/pharmacy-frontend-1.0/app/form">Ajouter un médicament ? </a></li>
                 </ul>
     
             </nav>
