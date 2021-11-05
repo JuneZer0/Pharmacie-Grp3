@@ -79,12 +79,16 @@ li a:hover {
 .container {
   padding: 2px 16px;
 }
-.visible {
-  display: block;
+
+/* Home.jsp CSS */
+.justPicture figure {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.invisible {
-  display: none;
+.justPicture figure img {
+  width: 100%;
 }
 
 /* Footer CSS */
