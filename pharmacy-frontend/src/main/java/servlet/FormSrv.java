@@ -24,6 +24,7 @@ public class FormSrv  extends HttpServlet {
         ServletContext sc = this.getServletContext();
         System.out.println("form servlet called");
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
+        rd.forward(req, resp);
     }
         // Récupérer l'article dans le champs texte
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -55,8 +56,8 @@ public class FormSrv  extends HttpServlet {
 				request.setAttribute("alertMessage", alertMessage);
                 System.out.println("ATTRIBUTE : "+request.getAttribute("alertMessage")); 
                 //transférer le traitement à la vue
-                RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
-               rd.forward(request, response);
+                RequestDispatcher rd = request.getRequestDispatcher(PathResolver.JSP_FORM);
+                rd.forward(request, response);
 				
 			}
 			
@@ -70,4 +71,3 @@ public class FormSrv  extends HttpServlet {
 	}
 
 }
-

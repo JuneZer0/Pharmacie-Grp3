@@ -20,14 +20,18 @@ public class HomeSrv extends HttpServlet {
     
         @Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-                
+                // Tests
                 System.out.println("--- Home called ---");
+                System.out.println("--- getServletContext() = " + getServletContext());
+                System.out.println("--- PathResolver.API_GETALL = " + PathResolver.API_GETALL);
                 System.out.println(request.getRequestURL());
+                // Créer une session
                 HttpSession session = request.getSession(false);      
                 // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste vide                        
                 List<Article> articles = new ArrayList<>();
                 if(session!=null && session.getAttribute("list")!=null){
                         articles = (List<Article>) request.getSession().getAttribute("list");
+                        session.invalidate();
                 }
                 
                 // Récuperer le "name en paramètre" s'il existe             
