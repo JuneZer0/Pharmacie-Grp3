@@ -26,11 +26,11 @@
                                      
                     <c:choose>
                         <c:when test="${art.getArticleQuantity() > 0}">
-                            <img src="../../View/img/001-available-64.png" alt="Available">
+                            <img src="http://localhost:8081/pharmacy-frontend-1.0/view/img/001-available-64.png" alt="Available">
                             <span>En stock</span>
                         </c:when>
                         <c:when test="${art.getArticleQuantity() == 0}">
-                            <img src="../../View/img/002-out-of-stock-64.png" alt="Not available">
+                            <img src="http://localhost:8081/pharmacy-frontend-1.0/view/img/002-out-of-stock-64.png" alt="Not available">
                             <span>Indisponible</span>
                         </c:when>
                         <c:otherwise>

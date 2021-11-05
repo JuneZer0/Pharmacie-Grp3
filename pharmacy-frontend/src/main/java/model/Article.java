@@ -13,6 +13,13 @@ public class Article {
     public Article() {
     }
 
+    public Article(Long articleBarcode, String articleName, Double articlePrice, Integer articleQuantity) {
+        this.articleBarcode = articleBarcode;
+        this.articleName = articleName;
+        this.articlePrice = articlePrice;
+        this.articleQuantity = articleQuantity;
+    }
+
     public Article(Long idArticle, Long articleBarcode, String articleName, Double articlePrice, Integer articleQuantity, Boolean isArticleAvailable) {
         this.idArticle = idArticle;
         this.articleBarcode = articleBarcode;
