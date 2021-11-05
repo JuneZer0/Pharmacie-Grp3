@@ -13,10 +13,19 @@ xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/x
   <dependencies>
 
   <dependency>
+    <groupId>com.guicedee.services</groupId>
+    <artifactId>jstl-parent</artifactId>
+    <version>62</version>
+    <type>pom</type>
+  </dependency>
+
+  <dependency>
     <groupId>javax.servlet</groupId>
     <artifactId>jstl</artifactId>
     <version>1.2</version>
+    <scope>runtime</scope>
   </dependency>
+
 <dependency>
     <groupId>jakarta.platform</groupId>
     <artifactId>jakarta.jakartaee-api</artifactId>
