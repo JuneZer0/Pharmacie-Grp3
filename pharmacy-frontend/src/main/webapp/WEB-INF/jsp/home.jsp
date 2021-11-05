@@ -64,7 +64,7 @@
                         <!-- <a href="${ PathResolver.SRV_PRODUCT_NAME }/${ art.getIdArticle() }">Détails</a> -->
                         <!-- Test -->
                         <!-- <a href="${ PathResolver.APP_CONTEXT }${ PathResolver.APP_PRODUCT }/${ art.getIdArticle() }">Détails</a> -->
-                        <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/${ art.getIdArticle() }">Détails</a>
+                        <a href="http://localhost:8081/pharmacy-frontend-1.0/app/article">Détails</a>
                     </button>
 
                     <!-- Edit button -->
@@ -73,7 +73,7 @@
                         <!-- De base -->
                         <!-- <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a> -->
                         <!-- Test -->
-                        <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/update/${ art.getIdArticle() }">Modifier</a>
+                        <a href="http://localhost:8081/pharmacy-frontend-1.0/app/form/${ art.getIdArticle() }">Modifier</a>
                     </button>
                     
                     <!-- Delete button -->
