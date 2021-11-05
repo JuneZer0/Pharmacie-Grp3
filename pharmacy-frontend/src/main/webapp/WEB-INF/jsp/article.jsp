@@ -27,7 +27,8 @@
         <div class="btn">
              <!-- Edit button -->
              <button type="button" class="btn btn-primary">
-                <a href="${ API_UPDATE }">Modifier</a>
+                
+                <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a>
             </button>
                 
             <!-- Delete button -->
