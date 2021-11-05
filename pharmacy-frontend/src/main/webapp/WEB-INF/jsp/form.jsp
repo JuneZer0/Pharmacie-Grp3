@@ -38,8 +38,10 @@
 		<span aria-hidden='true'>&times; </span>
 	</button>
 </div>
-
-<form action="#" method="post" class="row" >
+<%
+	}
+%>
+<form action="form" method="post" class="row" >
 	<div class="form-group col-sm-6">
 		<label for="barcode">Code Barre *</label> <input type="text"
 			class="form-control input-lg" id="barcode" name="barcode">
