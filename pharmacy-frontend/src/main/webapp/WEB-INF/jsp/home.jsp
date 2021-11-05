@@ -85,6 +85,13 @@
             </c:forEach>
         </section>
     </div>
+
+    <!-- Image ajoutée -->
+    <section>
+        <figure>
+            <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/006-medicine.png" alt="Pharmacy">
+        </figure>
+    </section>
 </c:if>
 
 <!-- Inclure le footer -->

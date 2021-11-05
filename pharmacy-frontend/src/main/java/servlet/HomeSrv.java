@@ -55,18 +55,18 @@ public class HomeSrv extends HttpServlet {
         @Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
                 System.out.println("POST METHOD");
-                 // Récupérer le nom écrit dans le champs texte
-                 String name = request.getParameter("searchArticles");
-                 if (name != null) {
-                         // Placer le nom en attribut pour que la jsp le garde
-                         request.setAttribute("name", name);
-                         // Faire la requête getByName(name) à envoyer au back
-                                 this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
-                 } else {
-                         // Faire la requête getAll()) à envoyer au back
-                                 this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
-                         // Envoyer la liste à la jsp
-                 }
+                // Récupérer le nom écrit dans le champs texte
+                String name = request.getParameter("searchArticles");
+                if (name != null) {
+                        // Placer le nom en attribut pour que la jsp le garde
+                        request.setAttribute("name", name);
+                        // Faire la requête getByName(name) à envoyer au back
+                                this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
+                } else {
+                        // Faire la requête getAll()) à envoyer au back
+                                this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
+                        // Envoyer la liste à la jsp
+                }
                
                         
 	}
