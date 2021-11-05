@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import helpers.PathResolver;
 
+
 @WebServlet("/form")
 public class FormSrv  extends HttpServlet {
 
@@ -17,23 +18,53 @@ public class FormSrv  extends HttpServlet {
     }
 
     @Override
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
         System.out.println("form servlet called");
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
-        rd.forward(req, resp);
     }
+        // Récupérer l'article dans le champs texte
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
-            // Récupérer l'article dans le champs texte
-            String name = request.getParameter("");
-      
-            // Si l'article existe => update
-            if (article != null) {
-            
-            }
-            
-             // Sinon => Create
-             else {
-                request.setAttribute("","" );
+        //Récupération des paramètres  
+		String barcode = request.getParameter("barcode");
+		String name = request.getParameter("name");
+		String price = request.getParameter("price");
+		String quantity = request.getParameter("quantity");
+		String alertMessage = "erreur";
+		if (request.getParameter("ajouter") != null) {
+
+			if(barcode == "" || name == "" || price == "" || quantity == "") {
+				
+				request.setAttribute("alertMessage", alertMessage);
+				doGet(request, response);
+			}
+			else {
+				alertMessage = "success";
+                
+                //le contrôleur crée un objet de type article qui correspond au modèle
+
+                Article article = new Article(barcode, name, price , quantity);
+
+                //le contrôleur enregistre cet objet comme attribut de requête pour le rendre disponible à la vue.
+                request.setAttribute("article ", article );
+               
+				request.setAttribute("alertMessage", alertMessage);
+                
+                //transférer le traitement à la vue
+                RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
+                rd.forward(request, response);
+				
+			}
+			
+		}
+
+
+		if (request.getParameter("modifier") != null) {
+			
+		}
+
+	}
 
 }
+
