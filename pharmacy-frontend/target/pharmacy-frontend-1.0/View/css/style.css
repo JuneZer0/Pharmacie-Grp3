@@ -1,7 +1,4 @@
 
-* {
-    box-sizing: border-box;
-}
 
 html {
     font-size: 70%;
@@ -110,7 +107,7 @@ li a:hover {
 }
 
 /* Footer CSS */
-footer {
+.footer {
   display: flex;
   justify-content: center;
   padding: 5px;

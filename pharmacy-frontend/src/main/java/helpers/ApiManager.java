@@ -59,6 +59,7 @@ public class ApiManager {
       String responseValue = apiResponse.readEntity(String.class);
       ObjectMapper mapper = new ObjectMapper();
       resultList = mapper.readValue(responseValue, new TypeReference<List<Article>>(){});
+      System.out.println(resultList);
       for(Article a: resultList){
         System.out.println("article : "+a.getArticleName());
       }
