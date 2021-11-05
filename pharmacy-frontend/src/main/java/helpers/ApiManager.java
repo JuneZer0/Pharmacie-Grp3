@@ -12,9 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.core.Response;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.jboss.resteasy.client.jaxrs.ResteasyClient;
@@ -59,6 +59,7 @@ public class ApiManager {
       String responseValue = apiResponse.readEntity(String.class);      
       ObjectMapper mapper = new ObjectMapper();
       resultList = mapper.readValue(responseValue, new TypeReference<List<Article>>(){});
+      System.out.println(resultList);
       for(Article a: resultList){
         System.out.println("article : "+a.getArticleName());
       }
