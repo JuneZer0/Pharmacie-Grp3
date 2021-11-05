@@ -11,6 +11,7 @@ import helpers.PathResolver;
 import model.Article;
 
 
+
 @WebServlet("/form")
 public class FormSrv  extends HttpServlet {
 
@@ -35,7 +36,7 @@ public class FormSrv  extends HttpServlet {
 		String alertMessage = "erreur";
 		if (request.getParameter("ajouter") != null) {
 
-			if(barcode ==  || name == "" || price == 0 || quantity == "") {
+			if(barcode ==0  || name == "" || price == 0 || quantity == 0) {
 				
 				request.setAttribute("alertMessage", alertMessage);
 				doGet(request, response);
