@@ -3,7 +3,6 @@ package servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,10 +18,66 @@ import model.Article;
 @WebServlet("/home")
 public class HomeSrv extends HttpServlet {
 
+
+        
         @Override
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                // Tests
+                System.out.println("--- Home called ---");
+                System.out.println("--- getServletContext() = " + getServletContext());
+                System.out.println("--- PathResolver.API_GETALL = " + PathResolver.API_GETALL);
+                System.out.println(request.getRequestURL());
+                // Créer une session
+                HttpSession session = request.getSession(false);      
+                // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste vide                        
+                List<Article> articles = new ArrayList<>();
+                if(session!=null && session.getAttribute("list")!=null){
+                        articles = (List<Article>) request.getSession().getAttribute("list");
+                        session.invalidate();
+                }
+                
+                // Récuperer le "name en paramètre" s'il existe             
+                String name = (String) request.getAttribute("name");
+                
+                // Tester si un name est présent
+                if (name != null) {                        
+                        // Tester si la liste est vide
+                        if (articles.size() == 0) {                                
+                                //pas de resultat
+                                PrintWriter out = response.getWriter();
+                                out.println("<p class='red'>Aucun résultat pour le nom : " + name +".</p>");
+                        }
+                }
+
+                // Envoyer la liste à la jsp et appeler la jsp
+                request.setAttribute("articles", articles);            
+                getServletContext().getRequestDispatcher(PathResolver.JSP_HOME).forward(request, response);
+	}
+
+        @Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+                System.out.println("POST METHOD");
+                // Récupérer le nom écrit dans le champs texte
+                String name = request.getParameter("searchArticles");
+                if (name != null) {
+                        // Placer le nom en attribut pour que la jsp le garde
+                        request.setAttribute("name", name);
+                        // Faire la requête getByName(name) à envoyer au back
+                                this.getServletContext().getRequestDispatcher(PathResolver.API_BYNAME + "/" + name).forward(request, response);   
+                } else {
+                        // Faire la requête getAll()) à envoyer au back
+                                this.getServletContext().getRequestDispatcher(PathResolver.API_GETALL).forward(request, response);
+                        // Envoyer la liste à la jsp
+                }
+               
+                        
+	}
+
+
+       /* @Override
         protected void doGet(HttpServletRequest request, HttpServletResponse response)
                         throws ServletException, IOException {
-                // Tests
+               // Tests
                 System.out.println("--- Home called ---");
                 System.out.println(request.getRequestURL());
                 // Créer une session
@@ -102,7 +157,7 @@ public class HomeSrv extends HttpServlet {
                         case "edit": 
                                 System.out.println("edit button pressed");
                                 
-                                break;*/                                       
+                                break;                                     
                 }
         }
                 //TODO : verifier (dans la jsp ? )qiue le nom rentré dans byname n'est pas vide sinon il recharge juste la page
@@ -112,10 +167,10 @@ public class HomeSrv extends HttpServlet {
                         System.out.println("empty name, reloading page");
                         session.setAttribute("name", "");                        
                         response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_HOME);
-                }
+                }*
 
         
 
-}
+}*/
 
 }
