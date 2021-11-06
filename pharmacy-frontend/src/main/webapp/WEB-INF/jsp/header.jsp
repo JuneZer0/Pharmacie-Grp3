@@ -23,7 +23,7 @@
                 <a href="http://localhost:8081/pharmacy-frontend-1.0/app/home" class="navbar-brand">PHARMACY</a>                      
                 <ul class="nav">                                            
                     <li class="nav-item active"><a class="nav-link" href="http://localhost:8081/pharmacy-frontend-1.0/app/home" >Accueil</a></li>
-                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/pharmacy-frontend-1.0/app/form">Ajouter un médicament ? </a></li>
+                    <li class="nav-item"><a class="nav-link" href="http://localhost:8081/pharmacy-frontend-1.0/app/form">Ajouter un article  </a></li>
                 </ul>
     
             </nav>
