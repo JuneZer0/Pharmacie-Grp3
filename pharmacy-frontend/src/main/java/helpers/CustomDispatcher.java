@@ -9,6 +9,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 
 public class CustomDispatcher {
@@ -56,12 +57,16 @@ public class CustomDispatcher {
      String[]parsedUrl= url.split("/");
      String servletname = parsedUrl[3];
      System.out.println("Servlet name :"+servletname);
+     HttpSession session = req.getSession(true);
      if(servletname == "home" && req.getAttribute("name")==null){
-         req.setAttribute("name", "");
+        
+         session.setAttribute("name", "");
      }
 
-      RequestDispatcher dsp = req.getRequestDispatcher("/"+servletname);
-      dsp.forward(req, rsp);
+      //RequestDispatcher dsp = req.getRequestDispatcher("/"+servletname);
+     System.out.println("redirecting");
+     rsp.sendRedirect(PathResolver.APP_CONTEXT+"/"+servletname);
+      //dsp.forward(req, rsp);
 
     }
 
@@ -121,7 +126,7 @@ public class CustomDispatcher {
                     throw new Exception("You made a query for list by name but no name has been provided");
                 }   
                 convertedRequest.put("method", "GET");
-                convertedRequest.put("path", PathResolver.API_TARGET_BYNAME+"/"+parsedUrl[4]);
+                convertedRequest.put("path", PathResolver.API_TARGET_BYNAME+"/"+parsedUrl[5]);
                 break;
             case PathResolver.MTHD_DELETE :
                 if(parsedUrl.length<4){
@@ -147,7 +152,9 @@ public class CustomDispatcher {
         switch(method){
             case "GET" :
                 String[] req = path.split("/");
-                if(req.length>3 && req[4].equals("byname")){
+                System.out.println("VALUE OF REQ 4 : "+req[4]);
+                if(req.length>5 && req[5].equals("byname")){
+                    System.out.println("VALUE OF REQ 5 : "+req[5]);              
                     apiManager.getArticlesByName(request, response);
                     
                 } else {

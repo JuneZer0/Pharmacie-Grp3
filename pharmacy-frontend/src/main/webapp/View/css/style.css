@@ -81,18 +81,57 @@ li a:hover {
 }
 
 /* Home.jsp CSS */
-.justPicture figure {
+.justPicture {
+  padding: 8em;
+}
+
+form button a {
+  color:white;
+}
+
+form button a:hover {
+  text-decoration-line: none;
+  color:white;
+}
+
+section {
+  padding: 1em;
+}
+
+section a {
+  color:white;
+}
+
+section a:hover {
+  text-decoration-line: none;
+  color:white;
+}
+
+section figure {
   width: fit-content;
   margin-left: auto;
   margin-right: auto;
 }
 
-.justPicture figure img {
+section figure img {
   width: 100%;
 }
 
+article {
+  padding: 1em;
+}
+
+.btn a {
+  color:white;
+}
+
+.btn a:hover {
+  text-decoration-line: none;
+  color:white;
+}
+
 /* Footer CSS */
-.footer {
+footer {
   display: flex;
   justify-content: center;
   padding: 5px;

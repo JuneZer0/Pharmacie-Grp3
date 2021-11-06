@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -43,7 +44,7 @@ public class ApiManager {
      * @throws ServletException
      */
     public void getArticles(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{  
-      System.out.println("Process with getting articles...");
+      System.out.println("get all articles...");
       
       //Create the list to send as a result
       List<Article>resultList = new ArrayList<>();  
@@ -68,18 +69,23 @@ public class ApiManager {
       apiClient.close();
 
       //Puts list in session attribute.
-      HttpSession session = request.getSession(true);
+      HttpSession session = request.getSession(false);
+      if(session!=null){session.invalidate();}
+      session = request.getSession(true);
       session.setAttribute("list", resultList);       
       response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_HOME);
     }
 
     
     public void getArticlesByName(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        String param = request.getParameter("byname");
+        HttpSession session = request.getSession(false);
+        String param = (String) session.getAttribute("name");
+        System.out.println("---ENTERED REQUEST WITH PARAM : "+param);
         //Create the list to send as a result
         List<Article>resultList = new ArrayList<>();  
         //Call the backend
-        ResteasyWebTarget target = apiClient.target(PathResolver.API_TARGET_BYNAME+"/lol");
+        ResteasyWebTarget target = apiClient.target(PathResolver.API_TARGET_BYNAME+"/"+param);
+        System.out.println("--- BYname method target : "+target);
         Response apiResponse = target.request().get();
         if(apiResponse.getStatus() == 441){
           System.out.println("auth required");
@@ -87,7 +93,7 @@ public class ApiManager {
         System.out.println("api response obtained");
         //Converts response to a list
         if(apiResponse.hasEntity()){
-        String responseValue = apiResponse.readEntity(String.class);      
+        String responseValue = apiResponse.readEntity(String.class);  
         ObjectMapper mapper = new ObjectMapper();
         resultList = mapper.readValue(responseValue, new TypeReference<List<Article>>(){});
         for(Article a: resultList){
@@ -98,7 +104,9 @@ public class ApiManager {
         apiClient.close();
   
         //Puts list in session attribute.
-        HttpSession session = request.getSession(true);
+        
+        if(session!=null){session.invalidate();}
+        session = request.getSession(true);
         session.setAttribute("list", resultList);   
         session.setAttribute("name", param);    
         response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_HOME);
