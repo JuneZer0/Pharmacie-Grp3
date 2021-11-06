@@ -1,9 +1,10 @@
        <!-- *** FOOTER ***
 _________________________________________________________ -->
 
+
 <footer class="footer">
     <div class="container">
-        <div class="col-md-6 col-sm-6">
+        <div class="col-md-12 col-sm-6">
             
 
             <p>

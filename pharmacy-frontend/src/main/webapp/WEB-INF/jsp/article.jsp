@@ -27,7 +27,8 @@
         <div class="btn">
              <!-- Edit button -->
              <button type="button" class="btn btn-primary">
-                <a href="${ API_UPDATE }">Modifier</a>
+                
+                <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a>
             </button>
                 
             <!-- Delete button -->
@@ -35,6 +36,13 @@
                 <a href="${ API_DELETE }">Supprimer</a>
             </button>
         </div>
+
+        <!-- Image ajoutée -->
+        <section>
+            <figure>
+                <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/003-pharmacy-2.png" alt="Pharmacy">
+            </figure>
+        </section>
 
         <div id ="footer">
             <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>
