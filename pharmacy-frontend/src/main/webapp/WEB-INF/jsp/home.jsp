@@ -74,13 +74,13 @@
 
                     <form method="post">
                         <!-- Details button -->
-                        <button type="submit" formaction="/action_page2.php" class="btn btn-success">
+                        <button type="submit" class="btn btn-success">
                             <!-- Lien vers l'URL avec l'id -->
                             <!-- De base -->
                             <!-- <a href="${ PathResolver.SRV_PRODUCT_NAME }/${ art.getIdArticle() }">Détails</a> -->
                             <!-- Test -->
                             <!-- <a href="${ PathResolver.APP_CONTEXT }${ PathResolver.APP_PRODUCT }/${ art.getIdArticle() }">Détails</a> -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/app/article">Détails</a>
+                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/byid/${art.getIdArticle()}">Détails</a>
                         </button>
     
                         <!-- Edit button -->
@@ -95,7 +95,7 @@
                         <!-- Delete button -->
                         <button type="button" class="btn btn-danger">
                             <!-- Lien vers l'URL avec l'id -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/delete/${ art.getIdArticle() }">Supprimer</a>
+                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/delete/${art.getIdArticle()}">Supprimer</a>
                         </button>
                     </form>
                 </article>

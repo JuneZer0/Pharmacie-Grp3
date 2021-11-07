@@ -91,10 +91,9 @@ public abstract class AGenericDaoImpl <T> implements IGenericDao<T> {
         startOperation();
 
         session.saveOrUpdate(objDoToCreate);
-        
-
         session.getTransaction().commit();
        }
+       
        catch(Exception e){
            System.out.println(e.getMessage());
        }

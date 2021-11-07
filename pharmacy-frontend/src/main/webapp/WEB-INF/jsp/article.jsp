@@ -8,10 +8,10 @@
             <h3>Détails de l'article</h3>
                
                 <div class="ArticleDetails">
-                <p class="name">Nom : ${art.articleName}</p>
-                <p class="barcode">Code barre : ${art.getArticleBarc()}</p>
-                <p class="price">Prix : ${art.godeetArticlePrice()} €</p>
-                <p class="quantity">Quantité : ${art.getArticleQuantity()}</p>
+                <p class="name">Nom : ${article.getArticleName()}</p>
+                <p class="barcode">Code barre : ${article.getArticleBarcode()}</p>
+                <p class="price">Prix : ${article.getArticlePrice()} €</p>
+                <p class="quantity">Quantité : ${article.getArticleQuantity()}</p>
 
              </div>
         </div>

@@ -140,7 +140,7 @@ public class CustomDispatcher {
                     throw new Exception("You made a delete request but no id has been specified");
                 }
                 convertedRequest.put("method", "DELETE");
-                convertedRequest.put("path", PathResolver.API_TARGET_DELETE+"/"+parsedUrl[4]);
+                convertedRequest.put("path", PathResolver.API_TARGET_DELETE+"/"+parsedUrl[5]);
                 break;
             //should never happen since method has already been checked.
             default : throw new Exception("Malformed Request. No method specified.");  
@@ -156,10 +156,10 @@ public class CustomDispatcher {
         ApiManager apiManager = new ApiManager();
         String method = apiRequest.get("method");
         String path = apiRequest.get("path");
+        String[] req = path.split("/");     
 
         switch(method){
-            case "GET" :            
-                String[] req = path.split("/");                
+            case "GET" :    
                 if(req.length>5 && req[5].equals(PathResolver.MTHD_BYNAME)){
                     System.out.println("VALUE OF REQ 5 : "+req[5]);              
                     apiManager.getArticlesByName(path, request, response);
@@ -177,7 +177,7 @@ public class CustomDispatcher {
                     break;
             
             case "DELETE" :
-                    apiManager.deleteArticle(request, response);
+                    apiManager.deleteArticle(req[5],request, response);
                     break;
             }
         

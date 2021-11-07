@@ -17,7 +17,10 @@ public class Article {
         this.articleBarcode = articleBarcode;
         this.articleName = articleName;
         this.articlePrice = articlePrice;
-        this.articleQuantity = articleQuantity;
+        this.articleQuantity = articleQuantity;        
+        this.setIsArticleAvailable(this.getArticleQuantity());
+        
+
     }
 
     public Article(Long idArticle, Long articleBarcode, String articleName, Double articlePrice, Integer articleQuantity, Boolean isArticleAvailable) {
@@ -27,6 +30,10 @@ public class Article {
         this.articlePrice = articlePrice;
         this.articleQuantity = articleQuantity;
         this.articleAvailable = isArticleAvailable;
+    }
+
+    public Article(Long idArticle2, Long barcode, String name, Double price, Integer quantity) {         
+        this.setIsArticleAvailable(this.getArticleQuantity());
     }
 
     public Long getIdArticle() {
@@ -77,8 +84,12 @@ public class Article {
         return this.articleAvailable;
     }
 
-    public void setIsArticleAvailable(Boolean isArticleAvailable) {
-        this.articleAvailable = isArticleAvailable;
+    public void setIsArticleAvailable(final Integer articleQuantity) {
+        if(articleQuantity>0){
+            this.articleAvailable=true;
+        } else {
+            this.articleAvailable=false;
+        }
     }
 
     @Override
