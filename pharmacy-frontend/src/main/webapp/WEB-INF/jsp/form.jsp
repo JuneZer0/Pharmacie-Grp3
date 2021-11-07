@@ -7,17 +7,17 @@
 		</header>
 
 		<c:choose>
-			<c:when test="${isNull}">
-				<h1>Ajouter un article</h1>
-			</c:when>
-			<c:otherwise>
+			<c:when test="${article.getIdArticle() > 0}">
 				<h1>Modifier l'article</h1>
+			</c:when>		
+			<c:otherwise>
+				<h1>Ajouter un article</h1>
 			</c:otherwise>
 		</c:choose>
 
 
 		<form action="form" method="post">
-			<c:if test = "${!isNull}">
+			<c:if test = "${article.getIdArticle() > 0}">
 				<label for="id">Id.</label>
 				<input type="text" class="form-control input lg" name="article-id" value="${article.getIdArticle()}"readonly="true"/>
 			</c:if>

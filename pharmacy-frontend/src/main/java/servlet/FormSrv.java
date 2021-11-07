@@ -2,7 +2,6 @@ package servlet;
 
 import java.io.IOException;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -52,7 +51,6 @@ public class FormSrv extends HttpServlet {
         if (request.getParameter("valider") != null) {
 
             if (barcode == null || (name == null) || price == null || quantity == null) {
-
                 request.setAttribute("alertMessage", alertMessage);
                 doGet(request, response);
             } else {
@@ -70,14 +68,8 @@ public class FormSrv extends HttpServlet {
                 session.setAttribute("article", article);
                 // transférer le traitement à la vue
                 response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.API_CREATE);
-
             }
-
-        }
-
-        if (request.getParameter("modifier") != null) {
-
-        }
+        }    
 
     }
 

@@ -157,7 +157,7 @@ public class ApiManager {
         LOGGER.info("--- Redirecting to destination...");
       
         LOGGER.info("--- Calling Form servlet... ");
-          response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_PRODUCT);
+          response.sendRedirect(destination);
       
       }
     }

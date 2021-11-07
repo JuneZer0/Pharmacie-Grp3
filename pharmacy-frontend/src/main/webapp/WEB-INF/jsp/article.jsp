@@ -16,16 +16,15 @@
              </div>
         </div>
 
-        <div class="btn">
+        <form method="post">
              <!-- Edit button -->
-             <button type="button" class="btn btn-primary">
-                
-                <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a>
-            </button>
-                
+             <button type="submit" class="btn btn-primary" name="edit" value="${article.getIdArticle()}">
+                 Modifier
+            </button>             
+               
             <!-- Delete button -->
-            <button type="button" class="btn btn-danger">
-                <a href="${ API_DELETE }">Supprimer</a>
+            <button type="submit" class="btn btn-danger" name="delete" value="${article.getIdArticle()}">
+                Supprimer
             </button>
         </div>
 
@@ -35,5 +34,5 @@
                 <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/003-pharmacy-2.png" alt="Pharmacy">
             </figure>
         </section>
-        <jsp:include page="footer.jsp"></jsp:include>
+        <jsp:include page="footer.jsp"/>
      

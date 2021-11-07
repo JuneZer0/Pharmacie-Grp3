@@ -118,31 +118,31 @@ public class HomeSrv extends HttpServlet {
                 if (request.getParameter("detail")!=null && !request.getParameter("detail").isEmpty()) {
                         // Faire la requête getById
                         System.out.println("--- sending post request detail from home to api");
-                        destination = PathResolver.APP_CONTEXT + PathResolver.SRV_PRODUCT_NAME;
+                        destination = PathResolver.APP_CONTEXT + PathResolver.APP_PRODUCT;
                         session.setAttribute("destination", destination);
-                        Long id = Long.parseLong(request.getParameter("id"));
+                        Long id = Long.parseLong(request.getParameter("detail"));
                         response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYID + "/" + id);
                 }
 
-                if (request.getParameter("edit") != null && !request.getParameter("edit").isEmpty()) {
+                else if (request.getParameter("edit") != null && !request.getParameter("edit").isEmpty()) {
                         // Faire la requête getById
                         System.out.println("--- sending post request edit from home to api");
-                        destination = PathResolver.APP_CONTEXT + PathResolver.SRV_FORM_NAME;
+                        destination = PathResolver.APP_CONTEXT + PathResolver.APP_FORM;
                         session.setAttribute("destination", destination);
-                        Long id = Long.parseLong(request.getParameter("id"));
+                        Long id = Long.parseLong(request.getParameter("edit"));
                         response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYID + "/" + id);
                 }
 
-                if (request.getParameter("delete") != null && !request.getParameter("delete").isEmpty()) {
+                else if (request.getParameter("delete") != null && !request.getParameter("delete").isEmpty()) {
                         // Faire la requête delete
                         System.out.println("--- sending post request delete from home to api");
                         List<Article> list = (ArrayList<Article>) request.getAttribute("articles");
                         session.setAttribute("list", list);
-                        Long id = Long.parseLong(request.getParameter("id"));
+                        Long id = Long.parseLong(request.getParameter("delete"));
                         response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_DELETE + "/" + id);
                 }
 
-                if (name != null && !name.trim().isEmpty()) {
+                else if (name != null && !name.trim().isEmpty()) {
 
                         switch (name) {
 
