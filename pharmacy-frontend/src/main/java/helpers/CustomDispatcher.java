@@ -1,6 +1,5 @@
 package helpers;
 
-import helpers.PathResolver;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -9,13 +8,16 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import org.jboss.logging.Logger;
 
 
 public class CustomDispatcher {
 
+    private static final Logger LOGGER = Logger.getLogger(CustomDispatcher.class);
 
     public CustomDispatcher(){}
-
 
     /**
      * Identifies if the calls is destined to the app or the api 
@@ -56,12 +58,16 @@ public class CustomDispatcher {
      String[]parsedUrl= url.split("/");
      String servletname = parsedUrl[3];
      System.out.println("Servlet name :"+servletname);
+     HttpSession session = req.getSession(true);
      if(servletname == "home" && req.getAttribute("name")==null){
-         req.setAttribute("name", "");
+        
+         session.setAttribute("name", "");
      }
 
-      RequestDispatcher dsp = req.getRequestDispatcher("/"+servletname);
-      dsp.forward(req, rsp);
+      //RequestDispatcher dsp = req.getRequestDispatcher("/"+servletname);
+     System.out.println("redirecting");
+     rsp.sendRedirect(PathResolver.APP_CONTEXT+"/"+servletname);
+      //dsp.forward(req, rsp);
 
     }
 
@@ -116,12 +122,18 @@ public class CustomDispatcher {
                 convertedRequest.put("method", "GET");
                 convertedRequest.put("path", PathResolver.API_TARGET_LIST);
                 break;
+
+           case PathResolver.MTHD_BYID : 
+                convertedRequest.put("method", "GET");
+                convertedRequest.put("path", PathResolver.API_TARGET_BYID+"/"+parsedUrl[5]);
+                break;
+
            case PathResolver.MTHD_BYNAME :
                 if(parsedUrl.length<4){
                     throw new Exception("You made a query for list by name but no name has been provided");
                 }   
                 convertedRequest.put("method", "GET");
-                convertedRequest.put("path", PathResolver.API_TARGET_BYNAME+"/"+parsedUrl[4]);
+                convertedRequest.put("path", PathResolver.API_TARGET_BYNAME+"/"+parsedUrl[5]);
                 break;
             case PathResolver.MTHD_DELETE :
                 if(parsedUrl.length<4){
@@ -139,21 +151,27 @@ public class CustomDispatcher {
     }
    
 
-    public void manageAPI(Map<String, String> apiRequest, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void manageAPI(Map<String, String> apiRequest, HttpServletRequest request, HttpServletResponse response) throws Exception {
         
         ApiManager apiManager = new ApiManager();
         String method = apiRequest.get("method");
         String path = apiRequest.get("path");
+
         switch(method){
-            case "GET" :
-                String[] req = path.split("/");
-                if(req.length>3 && req[4].equals("byname")){
-                    apiManager.getArticlesByName(request, response);
+            case "GET" :            
+                String[] req = path.split("/");                
+                if(req.length>5 && req[5].equals(PathResolver.MTHD_BYNAME)){
+                    System.out.println("VALUE OF REQ 5 : "+req[5]);              
+                    apiManager.getArticlesByName(path, request, response);
                     
+                } else if (req.length>5){
+                    apiManager.getArticleById(path, request, response);
+
                 } else {
                     apiManager.getArticles(request, response);
                 }
                 break;
+
             case "POST": 
                     apiManager.addArticles(request,response);
                     break;
