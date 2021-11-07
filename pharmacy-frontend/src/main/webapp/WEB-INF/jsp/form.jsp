@@ -68,4 +68,8 @@
 			</figure>
 		</section>
 
+<<<<<<< HEAD
 <%@include file="footer.jsp" %>
+=======
+
+>>>>>>> develop

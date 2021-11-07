@@ -27,6 +27,8 @@ public class FormSrv  extends HttpServlet {
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
         rd.forward(req, resp);
     }
+
+    
         // Récupérer l'article dans le champs texte
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
     
