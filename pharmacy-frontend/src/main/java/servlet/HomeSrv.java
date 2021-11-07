@@ -29,7 +29,7 @@ public class HomeSrv extends HttpServlet {
                 // Instancier un bouléen pour l'affichage
                 Boolean message = false;
 
-                String name = null;
+                String name = "";
                 // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste
                 // nulle
                 List<Article> articles = new ArrayList<>();
@@ -98,14 +98,14 @@ public class HomeSrv extends HttpServlet {
 
                        default : // Faire la requête getByName(name) à envoyer au back
                                 System.out.println("--- name stored in session , redirecting to api");
+                                session.setAttribute("name", name);
                                 response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYNAME + "/" + name);
                                 break;  
                 }
         }
                 
                 else {
-                        System.out.println("empty name, reloading page");
-                        session.setAttribute("name", "");                        
+                        System.out.println("empty name, reloading page"); 
                         response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_HOME);
                 }
 
