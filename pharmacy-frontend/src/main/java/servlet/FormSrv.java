@@ -22,6 +22,7 @@ public class FormSrv  extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
         ServletContext sc = this.getServletContext();
+    
         System.out.println("form servlet called");
         RequestDispatcher rd = sc.getRequestDispatcher(PathResolver.JSP_FORM);
         rd.forward(req, resp);
