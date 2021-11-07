@@ -37,7 +37,7 @@ public class FormSrv  extends HttpServlet {
 		String alertMessage = "erreur";
 		if (request.getParameter("ajouter") != null) {
 
-			if(barcode ==0  || name == "" || price == 0 || quantity == 0) {
+			if(barcode == null  || (name == null) || price== null || quantity == null) {
 				
 				request.setAttribute("alertMessage", alertMessage);
 				doGet(request, response);

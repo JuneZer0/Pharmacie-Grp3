@@ -43,21 +43,23 @@
 %>
 <form action="form" method="post" class="row" >
 	<div class="form-group col-sm-6">
-		<label for="barcode">Code Barre *</label> <input type="text"
-			class="form-control input-lg" id="barcode" name="barcode">
+		<label for="barcode">Code Barre *</label> 
+		<input type="text" required="required" class="form-control input-lg" id="barcode" name="barcode">
 	</div>
+
 	<div class="form-group col-sm-6">
-		<label for="nom">Nom</label> <input type="text"
-			class="form-control input-lg" id="name" name="name" value="">
+		<label for="nom">Nom</label> 
+		<input type="text" required="required" class="form-control input-lg" id="name" name="name" value="">
 	</div>
+
 	<div class="form-group col-sm-6">
-		<label for="price">Prix *</label> <input type="text"
-			class="form-control input-lg" id="price" name="price">
+		<label for="price">Prix *</label>
+		<input type="text" required="required" class="form-control input-lg" id="price" name="price">
 	</div>
 	
 	<div class="form-group col-sm-6">
-		<label for="quantity">Quantité</label> <input type="text"
-			class="form-control input-lg" id="quantity" name="quantity">
+		<label for="quantity">Quantité</label>
+		<input type="text" required="required" class="form-control input-lg" id="quantity" name="quantity">
 	</div>
 
 	<div class="form-group col-sm-12">
