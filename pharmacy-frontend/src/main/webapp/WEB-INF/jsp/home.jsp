@@ -6,9 +6,9 @@
 
 <!-- Boutons qui feront apparaître les différentes listes -->
 <form method="post">
-    Pour la liste de tous les articles
+    <!-- Pour la liste de tous les articles -->
     <button type="submit" class="btn btn-primary btn-lg" name="searchArticles" value="all">Obtenir la liste des éléments</button>
-    Pour la liste de tous des articles par nom
+    <!-- Pour la liste de tous des articles par nom -->
     <label for="searchArticles">Trouver des articles par nom</label>
     <input type="search" id="searchArticles" name="searchArticles" aria-label="Search articles">
     <button type="submit" class="btn btn-secondary btn-lg">Rechercher</button>

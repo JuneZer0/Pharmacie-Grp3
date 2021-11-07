@@ -67,6 +67,13 @@
 	</div>
 </form>
 
+<!-- Image ajoutée -->
+<section>
+	<figure>
+		<img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/004-pills.png"alt="Pharmacy">
+	</figure>
+</section>
+
 <%@include file="footer.jsp"%>
 
 
