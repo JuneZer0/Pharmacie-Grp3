@@ -39,16 +39,21 @@ public class HomeSrv extends HttpServlet {
                 // Récuperer le "name en paramètre" s'il existe             
                 String name = (String) request.getAttribute("name");
                 
+                // Instancier un bouléen
+                Boolean message = false;
+
                 // Tester si un name est présent
                 if (name != null) {                        
                         // Tester si la liste est vide
                         if (articles.size() == 0) {                                
                                 //pas de resultat
-                                PrintWriter out = response.getWriter();
-                                out.println("<p class='red'>Aucun résultat pour le nom : " + name +".</p>");
+                                // PrintWriter out = response.getWriter();
+                                // out.println("<p class='red'>Aucun résultat pour le nom : " + name +".</p>");
+                                message = true;
+                                request.setAttribute("resultName", name);
                         }
                 }
-
+                request.setAttribute("message", message);
                 // Envoyer la liste à la jsp et appeler la jsp
                 request.setAttribute("articles", articles);            
                 getServletContext().getRequestDispatcher(PathResolver.JSP_HOME).forward(request, response);

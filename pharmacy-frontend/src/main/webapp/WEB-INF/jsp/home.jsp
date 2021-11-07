@@ -26,6 +26,10 @@
     </button>
 </form> -->
 
+<c:if test="${ requestScope.message }">
+    <p class='red'>Aucun résultat pour le nom : ${ requestScope.resultName }.</p>
+</c:if>
+
 <c:if test="${ requestScope.articles.size() == 0 }">
     <section class="justPicture">
         <figure>
