@@ -88,27 +88,54 @@ public class HomeSrv extends HttpServlet {
                 HttpSession session = request.getSession(true);
 
                 if (name != null && !name.trim().isEmpty()) {
-                        switch (name){                     
+                        switch (name) {                   
+                                String destination;
+                                Long id = Long.parseLong(request.getParameter("id"));
 
-                       case "all":
-                                // Faire la requête getAll()) à envoyer au back
-                                System.out.println("--- sending post request from home to api");
-                                response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_GETALL);
-                                break;
+                                case "all":
+                                        // Faire la requête getAll()) à envoyer au back
+                                        System.out.println("--- sending post request from home to api");
+                                        response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_GETALL);
+                                        break;
+                        
+                                case "detail":
+                                        // Faire la requête getById
+                                        System.out.println("--- sending post request detail from home to api");
+                                        destination = PathResolver.APP_CONTEXT + PathResolver.SRV_PRODUCT_NAME;
+                                        session.setAttribute("destination", destination);
+                                        response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYID + "/" + id);
+                                        break;
 
-                       default : // Faire la requête getByName(name) à envoyer au back
-                                System.out.println("--- name stored in session , redirecting to api");
-                                session.setAttribute("name", name);
-                                response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYNAME + "/" + name);
-                                break;  
+                                case "edit":
+                                        // Faire la requête getById
+                                        System.out.println("--- sending post request edit from home to api");
+                                        destination = PathResolver.APP_CONTEXT + PathResolver.SRV_FORM_NAME;
+                                        session.setAttribute("destination", destination);
+                                        response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYID + "/" + id);
+                                        break;
+                
+                                case "delete":
+                                        // Faire la requête delete
+                                        System.out.println("--- sending post request delete from home to api");
+                                        List<Article> list = request.getAttribute("articles");
+                                        session.setAttribute("list", list);
+                                        response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_DELETE + "/" + id);
+                                        break;                        
+
+                                default : 
+                                        // Faire la requête getByName(name) à envoyer au back
+                                        System.out.println("--- name stored in session , redirecting to api");
+                                        session.setAttribute("name", name);
+                                        response.sendRedirect(PathResolver.APP_CONTEXT + PathResolver.API_BYNAME + "/" + name);
+                                        break;  
+                        }
                 }
-        }
                 
                 else {
                         System.out.println("empty name, reloading page"); 
                         response.sendRedirect(PathResolver.APP_CONTEXT+PathResolver.APP_HOME);
                 }
 
-}
+        }
 
 }

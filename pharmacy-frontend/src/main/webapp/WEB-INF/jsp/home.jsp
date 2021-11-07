@@ -35,6 +35,12 @@
                 <article id="article-${art.getIdArticle()}">
                     <!-- <a href="${pageContext.request.contextPath}/article?id</a> -->
                     <h4 class="name">Nom : ${art.getArticleName()}</h4>
+
+                    <c:if test="${ 1 < 0 }">
+                        <form method="post">
+                            <button type="submit" class="btn btn-danger" name="id" value="${art.getIdArticle()}"></button>
+                        </form>
+                    </c:if>
                                     
                     <c:choose>
                         <c:when test="${art.getArticleQuantity() > 0}">
@@ -51,29 +57,13 @@
 
                     <form method="post">
                         <!-- Details button -->
-                        <button type="submit" formaction="/action_page2.php" class="btn btn-success">
-                            <!-- Lien vers l'URL avec l'id -->
-                            <!-- De base -->
-                            <!-- <a href="${ PathResolver.SRV_PRODUCT_NAME }/${ art.getIdArticle() }">Détails</a> -->
-                            <!-- Test -->
-                            <!-- <a href="${ PathResolver.APP_CONTEXT }${ PathResolver.APP_PRODUCT }/${ art.getIdArticle() }">Détails</a> -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/app/article">Détails</a>
-                        </button>
+                        <button type="submit" class="btn btn-success" name="searchArticles" value="detail">Détails</button>
     
                         <!-- Edit button -->
-                        <button type="button" class="btn btn-primary">
-                            <!-- Lien vers l'URL avec l'id -->
-                            <!-- De base -->
-                            <!-- <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a> -->
-                            <!-- Test -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/byid/${art.getIdArticle()}">Modifier</a>
-                        </button>
+                        <button type="submit" class="btn btn-primary" name="searchArticles" value="edit">Modifier</button>
                         
                         <!-- Delete button -->
-                        <button type="button" class="btn btn-danger">
-                            <!-- Lien vers l'URL avec l'id -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/delete/${ art.getIdArticle() }">Supprimer</a>
-                        </button>
+                        <button type="submit" class="btn btn-danger" name="searchArticles" value="delete">Supprimer</button>
                     </form>
                 </article>
             </c:forEach>

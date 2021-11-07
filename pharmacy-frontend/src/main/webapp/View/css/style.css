@@ -130,6 +130,10 @@ article {
   color:white;
 }
 
+.red {
+  color: red;
+}
+
 /* Footer CSS */
 footer {
   display: flex;
