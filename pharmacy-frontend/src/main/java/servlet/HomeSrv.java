@@ -29,7 +29,7 @@ public class HomeSrv extends HttpServlet {
                 // Instancier un bouléen pour l'affichage
                 Boolean message = false;
 
-                String name;
+                String name = null;
                 // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste
                 // nulle
                 List<Article> articles = new ArrayList<>();

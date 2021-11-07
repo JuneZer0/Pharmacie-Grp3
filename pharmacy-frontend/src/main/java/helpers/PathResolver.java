@@ -44,7 +44,6 @@ public class PathResolver {
     public static final String API_TARGET_BYID = API_TARGET_CREATE;
     
 
-
     //API REQUESTS CALL FROM SERVLET OR JSP
     public static final String API_CREATE = API_ARTICLE_BASE+"/"+MTHD_CREATE;
     public static final String API_GETALL = API_ARTICLE_BASE+"/"+MTHD_LIST;
