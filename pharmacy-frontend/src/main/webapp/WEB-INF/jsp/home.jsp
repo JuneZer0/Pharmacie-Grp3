@@ -7,23 +7,23 @@
 <!-- Boutons qui feront apparaître les différentes listes -->
 
 <!-- Proposition de Caroline -->
-<!-- <form method="post">
+<form method="post">
     Pour la liste de tous les articles
     <button type="submit" class="btn btn-primary btn-lg" name="searchArticles" value="all">Obtenir la liste des éléments</button>
     Pour la liste de tous des articles par nom
     <label for="searchArticles">Trouver des articles par nom</label>
     <input type="search" id="searchArticles" name="searchArticles" aria-label="Search articles">
     <button type="submit" class="btn btn-secondary btn-lg">Rechercher</button>
-</form>  -->
+</form> 
 
-<form action="#" method="post">
-    <!-- Pour la liste de tous les articles -->
+<!--<form action="#" method="post">
+   Pour la liste de tous les articles 
     <button type="submit" class="btn btn-primary btn-lg">Obtenir la liste des éléments</button>
-    <!-- Pour la liste de tous des articles par nom -->
+    Pour la liste de tous des articles par nom 
     <label for="searchArticles">Trouver des articles par nom</label>
     <input type="search" id="searchArticles" name="searchArticles" aria-label="Search articles">
     <button type="submit" class="btn btn-secondary btn-lg">Rechercher</button>
-</form>
+</form> -->
 
 <!-- Test -->
 <!-- <form>
@@ -89,7 +89,7 @@
                             <!-- De base -->
                             <!-- <a href="${ PathResolver.API_UPDATE }/${ art.getIdArticle() }">Modifier</a> -->
                             <!-- Test -->
-                            <a href="http://localhost:8081/pharmacy-frontend-1.0/app/form/${ art.getIdArticle() }">Modifier</a>
+                            <a href="http://localhost:8081/pharmacy-frontend-1.0/api/articles/byid/${art.getIdArticle()}">Modifier</a>
                         </button>
                         
                         <!-- Delete button -->

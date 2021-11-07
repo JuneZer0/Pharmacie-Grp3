@@ -44,13 +44,13 @@ public class PathResolver {
     public static final String API_TARGET_BYID = API_TARGET_CREATE;
     
 
-
     //API REQUESTS CALL FROM SERVLET OR JSP
     public static final String API_CREATE = API_ARTICLE_BASE+"/"+MTHD_CREATE;
     public static final String API_GETALL = API_ARTICLE_BASE+"/"+MTHD_LIST;
     public static final String API_DELETE = API_ARTICLE_BASE+"/"+MTHD_DELETE;
     public static final String API_BYNAME = API_ARTICLE_BASE+"/"+MTHD_BYNAME;
     public static final String API_UPDATE = API_ARTICLE_BASE+"/"+MTHD_UPDATE;
+    public static final String API_BYID = API_ARTICLE_BASE+"/"+MTHD_BYID;
 
     //CALL ANOTHER SERVLET FROM SERVLET OR JSP
     public static final String APP_HOME = APP_BASE+SRV_HOME_NAME;
