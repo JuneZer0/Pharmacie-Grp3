@@ -1,6 +1,5 @@
 package helpers;
 
-import helpers.PathResolver;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,12 +10,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.jboss.logging.Logger;
+
 
 public class CustomDispatcher {
 
+    private static final Logger LOGGER = Logger.getLogger(CustomDispatcher.class);
 
     public CustomDispatcher(){}
-
 
     /**
      * Identifies if the calls is destined to the app or the api 
@@ -121,6 +122,12 @@ public class CustomDispatcher {
                 convertedRequest.put("method", "GET");
                 convertedRequest.put("path", PathResolver.API_TARGET_LIST);
                 break;
+
+           case PathResolver.MTHD_BYID : 
+                convertedRequest.put("method", "GET");
+                convertedRequest.put("path", PathResolver.API_TARGET_BYID+"/"+parsedUrl[5]);
+                break;
+
            case PathResolver.MTHD_BYNAME :
                 if(parsedUrl.length<4){
                     throw new Exception("You made a query for list by name but no name has been provided");
@@ -144,23 +151,27 @@ public class CustomDispatcher {
     }
    
 
-    public void manageAPI(Map<String, String> apiRequest, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void manageAPI(Map<String, String> apiRequest, HttpServletRequest request, HttpServletResponse response) throws Exception {
         
         ApiManager apiManager = new ApiManager();
         String method = apiRequest.get("method");
         String path = apiRequest.get("path");
+
         switch(method){
-            case "GET" :
-                String[] req = path.split("/");
-                System.out.println("VALUE OF REQ 4 : "+req[4]);
-                if(req.length>5 && req[5].equals("byname")){
+            case "GET" :            
+                String[] req = path.split("/");                
+                if(req.length>5 && req[5].equals(PathResolver.MTHD_BYNAME)){
                     System.out.println("VALUE OF REQ 5 : "+req[5]);              
-                    apiManager.getArticlesByName(request, response);
+                    apiManager.getArticlesByName(path, request, response);
                     
+                } else if (req.length>5){
+                    apiManager.getArticleById(path, request, response);
+
                 } else {
                     apiManager.getArticles(request, response);
                 }
                 break;
+
             case "POST": 
                     apiManager.addArticles(request,response);
                     break;

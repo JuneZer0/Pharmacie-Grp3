@@ -2,23 +2,15 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <% response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); %>
 
-<!DOCTYPE html>
-<html lang="en">
-
-    <body>
-        <header>
-            <jsp:include page="/WEB-INF/jsp/header.jsp"></jsp:include>
-        </header>
-        <div class="container">
+     <jsp:include page="header.jsp"></jsp:include>
+     <div class="container">
 
             <h3>Détails de l'article</h3>
                
                 <div class="ArticleDetails">
-                    
-                
                 <p class="name">Nom : ${art.articleName}</p>
-                <p class="barcode">Code barre : ${art.getArticleBarcode()}</p>
-                <p class="price">Prix : ${art.getArticlePrice()} €</p>
+                <p class="barcode">Code barre : ${art.getArticleBarc()}</p>
+                <p class="price">Prix : ${art.godeetArticlePrice()} €</p>
                 <p class="quantity">Quantité : ${art.getArticleQuantity()}</p>
 
              </div>
@@ -43,11 +35,5 @@
                 <img src="http://localhost:8081/pharmacy-frontend-1.0/View/img/003-pharmacy-2.png" alt="Pharmacy">
             </figure>
         </section>
-
-        <div id ="footer">
-            <jsp:include page="/WEB-INF/jsp/footer.jsp"></jsp:include>
-        </div>
-        
-        
-    </body>
-</html>
+        <jsp:include page="footer.jsp"></jsp:include>
+     

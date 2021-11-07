@@ -26,7 +26,8 @@ public class ArticleSrv extends HttpServlet {
         ServletContext sc = this.getServletContext();
         HttpSession session = req.getSession(true);
     if(session.getAttribute("article")!=null){
-        art = (Article) session.getAttribute("article");      
+        art = (Article) session.getAttribute("article");   
+        session.invalidate();   
     } else {
         System.out.println("article servlet called");        
             art.setArticleName("indisponible");
