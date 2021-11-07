@@ -35,12 +35,6 @@
                 <article id="article-${art.getIdArticle()}">
                     <!-- <a href="${pageContext.request.contextPath}/article?id</a> -->
                     <h4 class="name">Nom : ${art.getArticleName()}</h4>
-
-                    <c:if test="${ 1 < 0 }">
-                        <form method="post">
-                            <button type="submit" class="btn btn-danger" name="id" value="${art.getIdArticle()}"></button>
-                        </form>
-                    </c:if>
                                     
                     <c:choose>
                         <c:when test="${art.getArticleQuantity() > 0}">
@@ -57,13 +51,13 @@
 
                     <form method="post">
                         <!-- Details button -->
-                        <button type="submit" class="btn btn-success" name="searchArticles" value="detail">Détails</button>
+                        <button type="submit" class="btn btn-success" name="detail" value="${art.getIdArticle()}">Détails</button>
     
                         <!-- Edit button -->
-                        <button type="submit" class="btn btn-primary" name="searchArticles" value="edit">Modifier</button>
+                        <button type="submit" class="btn btn-primary" name="edit" value="${art.getIdArticle()}">Modifier</button>
                         
                         <!-- Delete button -->
-                        <button type="submit" class="btn btn-danger" name="searchArticles" value="delete">Supprimer</button>
+                        <button type="submit" class="btn btn-danger" name="delete" value="${art.getIdArticle()}">Supprimer</button>
                     </form>
                 </article>
             </c:forEach>
