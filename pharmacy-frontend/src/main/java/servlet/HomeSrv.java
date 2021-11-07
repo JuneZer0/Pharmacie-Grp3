@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +26,10 @@ public class HomeSrv extends HttpServlet {
                 // Créer une session
                 HttpSession session = request.getSession(false);
                 
-                String name = "";
+                // Instancier un bouléen pour l'affichage
+                Boolean message = false;
+
+                String name;
                 // Récuperer la "list" en attribut si elle existe, sinon ca restera une liste
                 // nulle
                 List<Article> articles = new ArrayList<>();
@@ -62,11 +64,14 @@ public class HomeSrv extends HttpServlet {
                         if (articles.size() == 0) {
                                 // pas de resultat
                                 System.out.println("list is empty");
-                                PrintWriter out = response.getWriter();
-                                out.println("<p class='red'>Aucun résultat pour le nom : " + name + ".</p>");
+                                // PrintWriter out = response.getWriter();
+                                // out.println("<p class='red'>Aucun résultat pour le nom : " + name + ".</p>");
+                                message = true;
+                                request.setAttribute("resultName", name);
                         }
                 }
-
+                // Envoyer le bouléen pour l'affichage
+                request.setAttribute("message", message);
                 // Envoyer la liste à la jsp et appeler la jsp
                 request.setAttribute("articles", articles);
                 System.out.println("--- calling jsp home ");
