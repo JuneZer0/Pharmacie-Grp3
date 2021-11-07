@@ -34,23 +34,23 @@
 			 -->
 		<form action="form" method="post" >
 			<div class="form-group col-sm-6">
-				<label for="barcode">Code barre : ${art.getArticleBarcode()}</label>
-				<input type="text" required="required" class="form-control input-lg" id="barcode"name="barcode">
+				<label for="barcode">Code barre</label>
+				<input type="text" required="required" class="form-control input-lg" id="barcode"name="barcode" value="${article.getArticleBarcode()}">
 			</div>
 
 			<div class="form-group col-sm-6">
-				<label for="nom">Nom : ${art.articleName}</label>
-				<input type="text" required="required" class="form-control input-lg" id="name"name="name" value="">
+				<label for="nom">Nom  </label>
+				<input type="text" required="required" class="form-control input-lg" id="name"name="name" value="${article.getArticleName()}">
 			</div>
 
 			<div class="form-group col-sm-6">
-				<label for="price">Prix : ${art.getArticlePrice()} €</label>
-				<input type="text" required="required" class="form-control input-lg" id="price"name="price">
+				<label for="price">Prix </label>
+				<input type="text" required="required" class="form-control input-lg" id="price"name="price" value="${article.getArticlePrice()} €">
 			</div>
 
 			<div class="form-group col-sm-6">
-				<label for="quantity">Quantité : ${art.getArticleQuantity()}</label>
-				<input type="text" required="required" class="form-control input-lg" id="quantity"name="quantity">
+				<label for="quantity">Quantité </label>
+				<input type="text" required="required" class="form-control input-lg" id="quantity"name="quantity" value="${article.getArticleQuantity()}">
 			</div>
 
 			<div class="form-group col-sm-12">
